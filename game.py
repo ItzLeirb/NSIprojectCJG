@@ -115,7 +115,7 @@ def trouverColonne(nom_joueur: str) -> int:
 
 # Cyprien le best
 def tour():
-    # PLZZZZZ faites la liste ici je sais plus les dimentions @JULESSSSSSSS
+    grille = [[0]*6]*7
     joueurs = setupJoueur()
     running = True
     joueur = 0
@@ -124,4 +124,7 @@ def tour():
         if joueur > 2:
             joueur = 1
 
-    grille == ajouterJeton(grille, trouverColonne(joueurs[joueur]),joueur)
+    grille = ajouterJeton(grille, trouverColonne(joueurs[joueur]), joueur)
+    
+    if isVerticalWin(grille, ?, ?, joueur) == True or isHorizontalWin == True or isDiagonalBottomLeftToTopRightWin == True or isDiagonalTopLeftToBottomRightWin == True: 
+        running == False
