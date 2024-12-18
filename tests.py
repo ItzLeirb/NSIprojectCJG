@@ -13,3 +13,5 @@ grille = [
 ]
 
 affichageConsole(grille, 1)
+
+assert isDiagonalBottomLeftToTopRightWin(grille, 3, 2, 2)==True
