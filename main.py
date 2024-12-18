@@ -16,7 +16,7 @@ def affichageConsole(grille: list[list[int]], joueur: int):
     
 
 # Cyprien le best
-def tour():
+def jeu():
     """
     Fait tourner la partie entiere
     """
@@ -34,3 +34,6 @@ def tour():
     
         if isVerticalWin(grille, index_colonne, index_ligne, joueur) == True or isHorizontalWin(grille, index_colonne, index_ligne, joueur) == True or isDiagonalBottomLeftToTopRightWin(grille, index_colonne, index_ligne, joueur) == True or isDiagonalTopLeftToBottomRightWin(grille, index_colonne, index_ligne, joueur) == True: 
             running == False
+
+
+jeu()
