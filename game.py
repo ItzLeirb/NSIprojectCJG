@@ -74,28 +74,50 @@ def isHorizontalWin(grille: list[list[int]], index_colonne: int, index_ligne: in
             nombre_daffilee = 0
     return False
 
-# Julle test par Gabriel
+# Gabriel
+def trouverDistances(grille: list[list[int]], index_colonne: int, index_ligne: int) -> tuple[int]:
+    """
+    trouve les distances entre la case [index_colonne][index_ligne] et les 4 bords de la grille
+    entree : grille type: list, 
+             index_colone type: int, 
+             index_ligne type: int,
+    sortie: distance_haut, distance_bas, distance_gauche, distance_droite 
+            type: int les distances entre les bords respectifs entre 0 et 4 (compris)
+    """
+    
+    distance_haut = min(index_ligne, 4)
+    distance_bas = max(0, len(grille[index_colonne])-1 - index_ligne)
+    distance_gauche = min(index_colonne, 4)
+    distance_droite = max(0, len(grille)-1 - index_colonne)
+    
+    return distance_haut, distance_bas, distance_gauche, distance_droite
+
+# Julle test/debug par Gabriel
 def isDiagonalBottomLeftToTopRightWin(grille: list[list[int]], index_colonne: int, index_ligne: int, joueur: int) -> bool:
     """
     verifie si un enchainement de 4 jetons n'as pas ete cree dans une diagonale allant de en bas 
-    a gauche a en haut a droite 
+    a gauche à en haut a droite 
     entree : grille type: list, 
-         index_colone type: int, 
-         index_ligne type: int,
-         joueur type: int
+             index_colone type: int, 
+             index_ligne type: int,
+             joueur type: int
     sortie: True si 4 jetons sont alignes, False dans l'autre cas
     """
-    nombre_daffilee = 0
-    ecart = 4
-    while index_ligne + ecart > len(grille[index_colonne]) - 1 or index_colonne - ecart < 0:
-        ecart -= 1
-    for i in range(-ecart,4):
-        if grille[index_colonne - 1][index_ligne + 1] == joueur:
+    
+    distance_haut, distance_bas, distance_gauche, distance_droite = trouverDistances(grille, index_colonne, index_ligne)
+    
+    ecart_bas_gauche = min(distance_bas, distance_gauche)
+    ecart_haut_droite = min(distance_haut, distance_droite)
+    
+    nombre_daffilee = 0        
+    for i in range(-ecart_bas_gauche, ecart_haut_droite):
+        if grille[index_colonne + i][index_ligne - i] == joueur:
             nombre_daffilee += 1
             if nombre_daffilee >= 4:
                 return True
         else:
             nombre_daffilee = 0
+            
     return False
    
 
