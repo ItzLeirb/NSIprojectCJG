@@ -101,6 +101,7 @@ def trouverColonne() -> int:
 
 # Cyprien le best
 def tour():
+    # PLZZZZZ faites la liste ici je sais plus les dimentions @JULESSSSSSSS
     joueurs = setupJoueur()
     running = True
     joueur = 0
@@ -109,4 +110,4 @@ def tour():
         if joueur > 2:
             joueur = 1
 
-    ajouterJeton(grille, trouverColonne(),joueur):
+    grille == ajouterJeton(grille, trouverColonne(),joueur)
