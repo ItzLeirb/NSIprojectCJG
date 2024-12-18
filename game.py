@@ -57,7 +57,6 @@ def isHorizontalWin(grille: list[list[int]], index_colonne: int, index_ligne: in
         else:
             nombre_daffilee = 0
     return False
-<<<<<<< HEAD
 # Julle
 def isDiagonalBottomLeftToTopRightWin(grille: list[list[int]], colonne: int, ligne: int, joueur: int) -> bool:
     nombre_daffilee = 0
@@ -72,20 +71,6 @@ def isDiagonalBottomLeftToTopRightWin(grille: list[list[int]], colonne: int, lig
             nombre_daffilee = 0
     return True  
    
-=======
-
-# Julle test par Gabriel
-def isDiagonalBottomLeftToTopRightWin(grille: list[list[int]], index_colonne: int, index_ligne: int, joueur: int) -> bool:
-    nombre_daffilee = 0
-    for i in range(8):
-        if grille[index_colonne + 4 - i][index_ligne - 4 + i] == joueur:
-            nombre_daffilee += 1
-            if nombre_daffilee >= 4:
-                return True
-        else:
-            nombre_daffilee = 0
-    return False
->>>>>>> 64265db779b37d0bdeedd8cd370a87990c2dd83b
 
 # Cyprien
 def isDiagonalTopLeftToBottomRightWin(grille: list[list[int]], index_colonne: int, index_ligne: int, joueur: int) -> bool:
