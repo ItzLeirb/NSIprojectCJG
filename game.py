@@ -64,8 +64,8 @@ def isDiagonalBottomLeftToTopRightWin(grille: list[list[int]], colonne: int, lig
             nombre_daffilee += 1
         if nombre_daffilee >= 4:
             return True
-    else:
-        nombre_daffilee = 0
+        else:
+            nombre_daffilee = 0
     return False
 
 # Cyprien
