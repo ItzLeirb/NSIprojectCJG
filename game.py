@@ -20,7 +20,7 @@ def ajouterJeton(grille: list[list[int]], colonne: int,
     entree : grille: la grille, 
              colonne: la colonne jouee
              joueur: le numero du joueur
-    choisir la colonne, verifier que la colone est valide ( existance et remplissage ), le jeton   doit tomber ( verifier toutes les [num colone][elt] pour placer le jeton au L[num colone][remplie - 1]
+    choisir la colonne, le jeton   doit tomber ( verifier toutes les [num colone][elt] pour placer le jeton au L[num colone][remplie - 1]
     ajoute un jeton X ou O selon le joueur
     en cas de colonne invalide, le coups doit etre rejoue <- non, fait dans tour()
     sortie : affiche la Liste modifiee (jeton ajoute dans le tableau)
@@ -55,11 +55,8 @@ def isHorizontalWin(grille: list[list[int]], colonne: int, ligne: int, joueur: i
         else:
             nombre_daffilee = 0
     return False
-<<<<<<< HEAD
-=======
-        
+
 # Julle test par Gabriel
->>>>>>> e75db8750dd6faf2c573d1a2283f5e4db646d9d8
 def isDiagonalBottomLeftToTopRightWin(grille: list[list[int]], colonne: int, ligne: int, joueur: int) -> bool:
    nombre_daffilee = 0
    for i in range(8):
@@ -89,10 +86,27 @@ def isDiagonalTopLeftToBottomRightWin(grille: list[list[int]], colonne: int, lig
         
 
 # Gabriel
-def setupJoueur() -> dict[str:int]:
+def setupJoueur() -> dict:
     joueurs = {
         1 : input(f"Nom du joueur {JOUEURS[1]}"),
         2 : input(f"Nom du joueur {JOUEURS[2]}")
     }
 
     return joueurs
+
+def trouverColonne() -> int:
+    """
+    choisit la colonne + verifie si valide
+    """
+
+# Cyprien le best
+def tour():
+    joueurs = setupJoueur()
+    running = True
+    joueur = 0
+    while running == True:
+        joueur += 1
+        if joueur > 2:
+            joueur = 1
+
+    ajouterJeton(grille, trouverColonne(),joueur):
