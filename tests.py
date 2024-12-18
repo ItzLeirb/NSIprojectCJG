@@ -1,6 +1,15 @@
 from game import *
 from main import affichageConsole
 
+# test trouverDistances
+grille = [[0]*6]*7
+
+print(trouverDistances(grille, 0, 0))
+assert trouverDistances(grille, 0, 0) == (0, 4, 0, 4)
+assert trouverDistances(grille, 6, 5) == (4, 0, 4, 0)
+assert trouverDistances(grille, 5, 0) == (0, 4, 4, 1)
+assert trouverDistances(grille, 0, 4) == (4, 1, 0, 4)
+assert trouverDistances(grille, 3, 3) == (3, 2, 3, 3)
 
 # test affichage
 
@@ -14,6 +23,7 @@ grille = [
     [0, 0, 0, 0, 0, 0]
 ]
 affichageConsole(grille, 1)
+
 
 # test isDiagonalBottomLeftToTopRightWin
 
@@ -80,7 +90,8 @@ grille = [
 assert isDiagonalBottomLeftToTopRightWin(grille, 2, 3, 1)==True
 
 
-#isVertacalWin
+# test isVertacalWin
+
 grille = [
     [0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0],

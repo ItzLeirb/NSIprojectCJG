@@ -3,14 +3,13 @@ from settings import *
 
 # la grille:
 """
-   0  1  2  3  4  5  6  7
+   0  1  2  3  4  5  6
 0
 1
 2
 3
 4
 5
-6
 """
 
 # Gabriel
@@ -86,9 +85,9 @@ def trouverDistances(grille: list[list[int]], index_colonne: int, index_ligne: i
     """
     
     distance_haut = min(index_ligne, 4)
-    distance_bas = max(0, len(grille[index_colonne])-1 - index_ligne)
+    distance_bas = min(len(grille[index_colonne])-1 - index_ligne, 4)
     distance_gauche = min(index_colonne, 4)
-    distance_droite = max(0, len(grille)-1 - index_colonne)
+    distance_droite = min(len(grille)-1 - index_colonne, 4)
     
     return distance_haut, distance_bas, distance_gauche, distance_droite
 
