@@ -61,11 +61,16 @@ def isDiagonalBottomLeftToTopRightWin(grille: list[list[int]], colonne: int, lig
 
 # Cyprien
 def isDiagonalTopLeftToBottomRightWin(grille: list[list[int]], colonne: int, ligne: int, joueur: int) -> bool:
-    pass
+    nombre_daffilee = 0
     ecart = -4
     while ligne - ecart < 0 or colonne - ecart < 0:
         ecart += 1
-    for i in range (ecart,4)
+    for i in range (ecart,4):
+        if colonne[i] == joueur and ligne[i] == joueur:
+            nombre_daffilee += 1
+        else:
+            nombre_daffilee = 0
+
 
         
 
