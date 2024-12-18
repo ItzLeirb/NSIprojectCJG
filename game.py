@@ -86,10 +86,10 @@ def isDiagonalBottomLeftToTopRightWin(grille: list[list[int]], index_colonne: in
     sortie: True si 4 jetons sont alignes, False dans l'autre cas
     """
     nombre_daffilee = 0
-    ecart = -4
-    while index_ligne - ecart < 0 or index_colonne - ecart < 0:
-        ecart += 1
-    for i in range (ecart,4):
+    ecart = 4
+    while index_ligne + ecart > len(grille[index_colonne]) - 1 or index_colonne - ecart < 0:
+        ecart -= 1
+    for i in range(-ecart,4):
         if grille[index_colonne - 1][index_ligne + 1] == joueur:
             nombre_daffilee += 1
             if nombre_daffilee >= 4:
