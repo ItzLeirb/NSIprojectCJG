@@ -78,10 +78,14 @@ def isDiagonalTopLeftToBottomRightWin(grille: list[list[int]], colonne: int, lig
     while ligne - ecart < 0 or colonne - ecart < 0:
         ecart += 1
     for i in range (ecart,4):
-        if colonne[i] == joueur and ligne[i] == joueur:
+        if grille[colonne - 1][ligne - 1] == joueur:
             nombre_daffilee += 1
+            if nombre_daffilee >= 4:
+                return True
         else:
             nombre_daffilee = 0
+    return False
+    
 
 
         
