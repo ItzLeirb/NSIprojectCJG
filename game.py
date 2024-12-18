@@ -85,8 +85,6 @@ def isDiagonalTopLeftToBottomRightWin(grille: list[list[int]], colonne: int, lig
         else:
             nombre_daffilee = 0
     return False
-    
-
 
         
 
