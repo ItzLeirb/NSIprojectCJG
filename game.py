@@ -109,7 +109,7 @@ def isDiagonalBottomLeftToTopRightWin(grille: list[list[int]], index_colonne: in
     ecart_haut_droite = min(distance_haut, distance_droite)
     
     nombre_daffilee = 0        
-    for i in range(-ecart_bas_gauche, ecart_haut_droite):
+    for i in range(-ecart_bas_gauche, ecart_haut_droite+1):
         if grille[index_colonne + i][index_ligne - i] == joueur:
             nombre_daffilee += 1
             if nombre_daffilee >= 4:
@@ -131,19 +131,21 @@ def isDiagonalTopLeftToBottomRightWin(grille: list[list[int]], index_colonne: in
          joueur type: int
     sortie: True si 4 jetons sont alignes, False dans l'autre cas
     """
+    
+    distance_haut, distance_bas, distance_gauche, distance_droite = trouverDistances(grille, index_colonne, index_ligne)
+    
+    ecart_haut_gauche = min(distance_haut, distance_gauche)
+    ecart_bas_droite = min(distance_bas, distance_droite)
+    
     nombre_daffilee = 0
-    ecart = -4
-    while index_ligne - ecart < 0 or index_colonne - ecart < 0:
-        ecart += 1
-    for i in range (ecart,4):
-        if grille[index_colonne + 1][index_ligne + 1] == joueur:
+    for i in range(-ecart_haut_gauche, ecart_bas_droite+1):
+        if grille[index_colonne + i][index_ligne + i] == joueur:
             nombre_daffilee += 1
             if nombre_daffilee >= 4:
                 return True
         else:
             nombre_daffilee = 0
     return False
-
         
 
 # Gabriel

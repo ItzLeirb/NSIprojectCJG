@@ -77,17 +77,70 @@ grille = [
     [1, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0]
 ]
-assert isDiagonalBottomLeftToTopRightWin(grille, 2, 3, 1)==True
+assert isDiagonalBottomLeftToTopRightWin(grille, 2, 3, 1)==False
+
+# test isDiagonalTopLeftToBottomRightWin
+
 grille = [
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 1],
-    [0, 0, 0, 0, 1, 1],
-    [0, 0, 0, 1, 1, 2],
     [0, 0, 2, 1, 2, 1],
-    [0, 2, 0, 0, 0, 1],
-    [1, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0]
+    [0, 0, 0, 2, 1, 2],
+    [0, 0, 0, 0, 2, 1],
+    [0, 0, 0, 0, 0, 2]
 ]
-assert isDiagonalBottomLeftToTopRightWin(grille, 2, 3, 1)==True
+assert isDiagonalTopLeftToBottomRightWin(grille, 3, 2, 2)==True
+grille = [
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 1],
+    [0, 0, 2, 1, 2, 1],
+    [0, 0, 0, 1, 1, 2],
+    [0, 0, 0, 0, 2, 1],
+    [0, 0, 0, 0, 0, 2]
+]
+assert isDiagonalTopLeftToBottomRightWin(grille, 3, 2, 2)==False
+grille = [
+    [0, 0, 0, 0, 0, 0],
+    [2, 0, 0, 0, 0, 0],
+    [0, 2, 0, 0, 0, 1],
+    [0, 0, 2, 1, 2, 1],
+    [0, 0, 0, 2, 1, 2],
+    [0, 0, 0, 0, 1, 1],
+    [0, 0, 0, 0, 0, 2]
+]
+assert isDiagonalTopLeftToBottomRightWin(grille, 4, 3, 2)==True
+grille = [
+    [0, 0, 0, 0, 0, 0],
+    [1, 0, 0, 0, 0, 0],
+    [0, 1, 0, 0, 0, 1],
+    [0, 0, 1, 1, 2, 1],
+    [0, 0, 0, 1, 1, 2],
+    [0, 0, 0, 0, 1, 1],
+    [0, 0, 0, 0, 0, 2]
+]
+assert isDiagonalTopLeftToBottomRightWin(grille, 4, 3, 1)==True
+grille = [
+    [0, 0, 0, 0, 0, 0],
+    [1, 0, 0, 0, 0, 0],
+    [0, 2, 0, 0, 0, 1],
+    [0, 0, 1, 1, 2, 1],
+    [0, 0, 0, 1, 1, 2],
+    [0, 0, 0, 0, 1, 1],
+    [0, 0, 0, 0, 0, 1]
+]
+assert isDiagonalTopLeftToBottomRightWin(grille, 4, 3, 1)==True
+grille = [
+    [0, 0, 0, 0, 0, 0],
+    [1, 0, 0, 0, 0, 0],
+    [0, 2, 0, 0, 0, 1],
+    [0, 0, 2, 1, 2, 1],
+    [0, 0, 0, 1, 1, 2],
+    [0, 0, 0, 0, 1, 1],
+    [0, 0, 0, 0, 0, 1]
+]
+assert isDiagonalTopLeftToBottomRightWin(grille, 4, 3, 1)==False
 
 
 # test isVertacalWin
