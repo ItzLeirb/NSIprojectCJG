@@ -34,6 +34,14 @@ def ajouterJeton(grille: list[list[int]], index_colonne: int,
 
 # Gabriel
 def isVerticalWin(grille: list[list[int]], index_colonne: int, index_ligne: int, joueur: int) -> bool:
+    """
+    verifie si un enchainement de 4 jeton n'as pas ete cree verticalement
+    entree : grille type: list, 
+             index_colone type: int, 
+             index_ligne type: int,
+             joueur type: int
+    sortie: True si 4 jetons sont alignes, False dans l'autre cas
+    """
     nombre_daffilee = 0
     for jeton in grille[index_colonne][index_ligne:]:
         if jeton == 0: continue
@@ -48,6 +56,14 @@ def isVerticalWin(grille: list[list[int]], index_colonne: int, index_ligne: int,
 
 # Cyprien
 def isHorizontalWin(grille: list[list[int]], index_colonne: int, index_ligne: int, joueur: int) -> bool:
+    """
+    verifie si un enchainement de 4 jeton n'as pas ete cree horizontalement
+    entree : grille type: list, 
+             index_colone type: int, 
+             index_ligne type: int,
+             joueur type: int
+    sortie: True si 4 jetons sont alignes, False dans l'autre cas
+    """
     nombre_daffilee = 0
     for jeton in range(len(grille[index_colonne])):
         if index_colonne[jeton][index_ligne] == joueur:
@@ -57,8 +73,18 @@ def isHorizontalWin(grille: list[list[int]], index_colonne: int, index_ligne: in
         else:
             nombre_daffilee = 0
     return False
-# Julle
-def isDiagonalBottomLeftToTopRightWin(grille: list[list[int]], colonne: int, ligne: int, joueur: int) -> bool:
+
+# Julle test par Gabriel
+def isDiagonalBottomLeftToTopRightWin(grille: list[list[int]], index_colonne: int, index_ligne: int, joueur: int) -> bool:
+    """
+    verifie si un enchainement de 4 jetons n'as pas ete cree dans une diagonale allant de en bas 
+    a gauche a en haut a droite 
+    entree : grille type: list, 
+         index_colone type: int, 
+         index_ligne type: int,
+         joueur type: int
+    sortie: True si 4 jetons sont alignes, False dans l'autre cas
+    """
     nombre_daffilee = 0
     while grille[colonne][ligne] == grille[colonne][ligne + 4]:
         grille[colonne - 1][ligne + 1]
@@ -74,12 +100,21 @@ def isDiagonalBottomLeftToTopRightWin(grille: list[list[int]], colonne: int, lig
 
 # Cyprien
 def isDiagonalTopLeftToBottomRightWin(grille: list[list[int]], index_colonne: int, index_ligne: int, joueur: int) -> bool:
+    """
+    verifie si un enchainement de 4 jetons n'as pas ete cree dans une diagonale allant de en haut 
+    a gauche a en bas a droite 
+    entree : grille type: list, 
+         index_colone type: int, 
+         index_ligne type: int,
+         joueur type: int
+    sortie: True si 4 jetons sont alignes, False dans l'autre cas
+    """
     nombre_daffilee = 0
     ecart = -4
     while index_ligne - ecart < 0 or index_colonne - ecart < 0:
         ecart += 1
     for i in range (ecart,4):
-        if grille[index_colonne - 1][index_ligne - 1] == joueur:
+        if grille[index_colonne + 1][index_ligne + 1] == joueur:
             nombre_daffilee += 1
             if nombre_daffilee >= 4:
                 return True
@@ -91,6 +126,9 @@ def isDiagonalTopLeftToBottomRightWin(grille: list[list[int]], index_colonne: in
 
 # Gabriel
 def setupJoueur() -> dict:
+    """
+    Permet au joueurs de rentrer leurs noms et les associes a un numero grace a un dictionaire
+    """
     joueurs = {
         1 : input(f"Nom du joueur {JOUEURS[1]}"),
         2 : input(f"Nom du joueur {JOUEURS[2]}")
@@ -131,7 +169,8 @@ def tour():
         if joueur > 2:
             joueur = 1
 
-    grille = ajouterJeton(grille, trouverColonne(joueurs[joueur]), joueur)
+    index_colonne = trouverColonne(joueurs[joueur])
+    grille, index_ligne = ajouterJeton(grille, index_colonne, joueur)
     
-    if isVerticalWin(grille, ?, ?, joueur) == True or isHorizontalWin == True or isDiagonalBottomLeftToTopRightWin == True or isDiagonalTopLeftToBottomRightWin == True: 
+    if isVerticalWin(grille, index_colonne, index_ligne, joueur) == True or isHorizontalWin(grille, index_colonne, index_ligne, joueur) == True or isDiagonalBottomLeftToTopRightWin(grille, index_colonne, index_ligne, joueur) == True or isDiagonalTopLeftToBottomRightWin(grille, index_colonne, index_ligne, joueur) == True: 
         running == False
