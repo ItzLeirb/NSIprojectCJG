@@ -1,4 +1,5 @@
 # main functions
+from settings import *
 
 # la grille:
 """
@@ -74,6 +75,11 @@ def isDiagonalTopLeftToBottomRightWin(grille: list[list[int]], colonne: int, lig
 
         
 
+# Gabriel
+def setupJoueur() -> dict[str:int]:
+    joueurs = {
+        1 : input(f"Nom du joueur {JOUEURS[1]}"),
+        2 : input(f"Nom du joueur {JOUEURS[2]}")
+    }
 
-def setupJoueur() -> tuple[int]:
-    pass
+    return joueurs
