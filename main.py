@@ -8,7 +8,7 @@ def affichageConsole(grille: list[list[int]], joueur: int):
     for ligne in range(len(grille[0])):
         ligne_texte = f"{ligne} | "
         for colonne in range(len(grille)):
-            ligne_texte += f"{JOUEUR_IMAGE[grille[colonne][ligne]]} | "
+            ligne_texte += f"{JOUEURS_IMAGE[grille[colonne][ligne]]} | "
         print(ligne_texte)
     
     print("")
@@ -32,8 +32,9 @@ def jeu():
         index_colonne = trouverColonne(joueurs[joueur])
         grille, index_ligne = ajouterJeton(grille, index_colonne, joueur)
     
-        if isVerticalWin(grille, index_colonne, index_ligne, joueur) == True or isHorizontalWin(grille, index_colonne, index_ligne, joueur) == True or isDiagonalBottomLeftToTopRightWin(grille, index_colonne, index_ligne, joueur) == True or isDiagonalTopLeftToBottomRightWin(grille, index_colonne, index_ligne, joueur) == True: 
+        if isVerticalWin(grille, index_colonne, index_ligne, joueur) == True or isHorizontalWin(grille, index_ligne, joueur) == True or isDiagonalBottomLeftToTopRightWin(grille, index_colonne, index_ligne, joueur) == True or isDiagonalTopLeftToBottomRightWin(grille, index_colonne, index_ligne, joueur) == True: 
             running == False
 
 
-jeu()
+if __name__ == '__main__':
+    jeu()

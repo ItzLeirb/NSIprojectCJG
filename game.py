@@ -54,18 +54,17 @@ def isVerticalWin(grille: list[list[int]], index_colonne: int, index_ligne: int,
     return nombre_daffilee >= 4
 
 # Cyprien
-def isHorizontalWin(grille: list[list[int]], index_colonne: int, index_ligne: int, joueur: int) -> bool:
+def isHorizontalWin(grille: list[list[int]], index_ligne: int, joueur: int) -> bool:
     """
     verifie si un enchainement de 4 jeton n'as pas ete cree horizontalement
     entree : grille type: list, 
-             index_colone type: int, 
              index_ligne type: int,
              joueur type: int
     sortie: True si 4 jetons sont alignes, False dans l'autre cas
     """
     nombre_daffilee = 0
-    for jeton in range(len(grille[index_colonne])):
-        if index_colonne[jeton][index_ligne] == joueur:
+    for index_jeton in range(len(grille)):
+        if grille[index_jeton][index_ligne] == joueur:
             nombre_daffilee += 1
             if nombre_daffilee >= 4:
                 return True
@@ -154,8 +153,8 @@ def setupJoueur() -> dict:
     Permet au joueurs de rentrer leurs noms et les associes a un numero grace a un dictionaire
     """
     joueurs = {
-        1 : input(f"Nom du joueur {JOUEURS[1]}"),
-        2 : input(f"Nom du joueur {JOUEURS[2]}")
+        1 : input(f"Nom du joueur {JOUEURS_IMAGE[1]}"),
+        2 : input(f"Nom du joueur {JOUEURS_IMAGE[2]}")
     }
 
     return joueurs

@@ -4,7 +4,6 @@ from main import affichageConsole
 # test trouverDistances
 grille = [[0]*6]*7
 
-print(trouverDistances(grille, 0, 0))
 assert trouverDistances(grille, 0, 0) == (0, 4, 0, 4)
 assert trouverDistances(grille, 6, 5) == (4, 0, 4, 0)
 assert trouverDistances(grille, 5, 0) == (0, 4, 4, 1)
@@ -206,4 +205,61 @@ grille = [
 ]
 assert isVerticalWin(grille, 6, 3, 1)==False
 
+# tests isHorizontalWin()
 
+grille = [
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 1],
+    [0, 0, 0, 0, 0, 1],
+    [0, 0, 0, 0, 0, 1],
+    [0, 0, 0, 0, 0, 1]
+]
+assert isHorizontalWin(grille, 5, 1)==True
+
+grille = [
+    [0, 0, 0, 0, 0, 1],
+    [0, 0, 0, 0, 0, 1],
+    [0, 0, 0, 0, 0, 1],
+    [0, 0, 0, 0, 0, 1],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0]
+]
+assert isHorizontalWin(grille, 5, 1)==True
+
+grille = [
+    [0, 0, 0, 0, 0, 1],
+    [0, 0, 0, 0, 0, 1],
+    [0, 0, 0, 0, 0, 1],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 1],
+    [0, 0, 0, 0, 0, 1],
+    [0, 0, 0, 0, 0, 1]
+]
+assert isHorizontalWin(grille, 5, 1)==False
+
+grille = [
+    [0, 0, 0, 0, 0, 1],
+    [0, 0, 0, 0, 0, 1],
+    [0, 0, 0, 0, 0, 1],
+    [0, 0, 0, 0, 0, 2],
+    [0, 0, 0, 0, 0, 1],
+    [0, 0, 0, 0, 0, 1],
+    [0, 0, 0, 0, 0, 1]
+]
+assert isHorizontalWin(grille, 5, 1)==False
+
+grille = [
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 1],
+    [0, 0, 0, 0, 0, 1],
+    [0, 0, 0, 0, 0, 1],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0]
+]
+assert isHorizontalWin(grille, 5, 1)==False
+
+print('Tous les tests sont passés')
