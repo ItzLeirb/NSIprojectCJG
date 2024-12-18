@@ -124,4 +124,4 @@ def tour():
         if joueur > 2:
             joueur = 1
 
-    grille == ajouterJeton(grille, trouverColonne(),joueur)
+    grille == ajouterJeton(grille, trouverColonne(joueurs[joueur]),joueur)
