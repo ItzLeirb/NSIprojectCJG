@@ -117,6 +117,9 @@ def trouverColonne(nom_joueur: str) -> int:
 
 # Cyprien le best
 def tour():
+    """
+    Fait tourner la partie entiere
+    """
     grille = [[0]*6]*7
     joueurs = setupJoueur()
     running = True
