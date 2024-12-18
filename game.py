@@ -14,7 +14,7 @@ from settings import *
 """
 
 # Gabriel
-def ajouterJeton(grille: list[list[int]], colonne: int,
+def ajouterJeton(grille: list[list[int]], index_colonne: int,
                  joueur: int) -> list[list[int]]:
     """
     entree : grille: la grille, 
@@ -25,15 +25,15 @@ def ajouterJeton(grille: list[list[int]], colonne: int,
     en cas de colonne invalide, le coups doit etre rejoue <- non, fait dans tour()
     sortie : affiche la Liste modifiee (jeton ajoute dans le tableau)
     """
-    for index_ligne, jeton in enumerate(grille[colonne]):
+    for index_ligne, jeton in enumerate(grille[index_colonne]):
         if jeton != 0:  #la case de la grille n'est vide
-            grille[colonne][index_ligne-1] = joueur
+            grille[index_colonne][index_ligne-1] = joueur
             break
 
 # Gabriel
-def isVerticalWin(grille: list[list[int]], colonne: int, ligne: int, joueur: int) -> bool:
+def isVerticalWin(grille: list[list[int]], index_colonne: int, index_ligne: int, joueur: int) -> bool:
     nombre_daffilee = 0
-    for jeton in grille[colonne][ligne:]:
+    for jeton in grille[index_colonne][index_ligne:]:
         if jeton == 0: continue
 
         if jeton == joueur:
@@ -45,10 +45,10 @@ def isVerticalWin(grille: list[list[int]], colonne: int, ligne: int, joueur: int
     return nombre_daffilee >= 4
 
 # Cyprien
-def isHorizontalWin(grille: list[list[int]], colonne: int, ligne: int, joueur: int) -> bool:
+def isHorizontalWin(grille: list[list[int]], index_colonne: int, index_ligne: int, joueur: int) -> bool:
     nombre_daffilee = 0
-    for jeton in range(len(grille[colonne])):
-        if colonne[i][ligne] == joueur:
+    for jeton in range(len(grille[index_colonne])):
+        if index_colonne[jeton][index_ligne] == joueur:
             nombre_daffilee += 1
             if nombre_daffilee >= 4:
                 return True
@@ -57,10 +57,10 @@ def isHorizontalWin(grille: list[list[int]], colonne: int, ligne: int, joueur: i
     return False
 
 # Julle test par Gabriel
-def isDiagonalBottomLeftToTopRightWin(grille: list[list[int]], colonne: int, ligne: int, joueur: int) -> bool:
+def isDiagonalBottomLeftToTopRightWin(grille: list[list[int]], index_colonne: int, index_ligne: int, joueur: int) -> bool:
     nombre_daffilee = 0
     for i in range(8):
-        if grille[colonne + 4 - i][ligne - 4 + i] == joueur:
+        if grille[index_colonne + 4 - i][index_ligne - 4 + i] == joueur:
             nombre_daffilee += 1
             if nombre_daffilee >= 4:
                 return True
@@ -69,13 +69,13 @@ def isDiagonalBottomLeftToTopRightWin(grille: list[list[int]], colonne: int, lig
     return False
 
 # Cyprien
-def isDiagonalTopLeftToBottomRightWin(grille: list[list[int]], colonne: int, ligne: int, joueur: int) -> bool:
+def isDiagonalTopLeftToBottomRightWin(grille: list[list[int]], index_colonne: int, index_ligne: int, joueur: int) -> bool:
     nombre_daffilee = 0
     ecart = -4
-    while ligne - ecart < 0 or colonne - ecart < 0:
+    while ligne - ecart < 0 or index_colonne - ecart < 0:
         ecart += 1
     for i in range (ecart,4):
-        if grille[colonne - 1][ligne - 1] == joueur:
+        if grille[index_colonne - 1][index_ligne - 1] == joueur:
             nombre_daffilee += 1
             if nombre_daffilee >= 4:
                 return True
