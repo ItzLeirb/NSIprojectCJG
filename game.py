@@ -15,7 +15,7 @@ from settings import *
 
 # Gabriel
 def ajouterJeton(grille: list[list[int]], index_colonne: int,
-                 joueur: int) -> list[list[int]]:
+                 joueur: int) -> tuple[list[list[int]], int]:
     """
     entree : grille: la grille, 
              colonne: la colonne jouee
@@ -29,6 +29,8 @@ def ajouterJeton(grille: list[list[int]], index_colonne: int,
         if jeton != 0:  #la case de la grille n'est vide
             grille[index_colonne][index_ligne-1] = joueur
             break
+
+    return grille, index_ligne-1
 
 # Gabriel
 def isVerticalWin(grille: list[list[int]], index_colonne: int, index_ligne: int, joueur: int) -> bool:
