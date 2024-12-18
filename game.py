@@ -31,7 +31,7 @@ def ajouterJeton(grille: list[list[int]], index_colonne: int,
 
     return grille, index_ligne-1
 
-# Gabriel
+# Gabriel testé
 def isVerticalWin(grille: list[list[int]], index_colonne: int, index_ligne: int, joueur: int) -> bool:
     """
     verifie si un enchainement de 4 jeton n'as pas ete cree verticalement
@@ -53,7 +53,7 @@ def isVerticalWin(grille: list[list[int]], index_colonne: int, index_ligne: int,
             break
     return nombre_daffilee >= 4
 
-# Cyprien
+# Cyprien testé
 def isHorizontalWin(grille: list[list[int]], index_ligne: int, joueur: int) -> bool:
     """
     verifie si un enchainement de 4 jeton n'as pas ete cree horizontalement
@@ -72,7 +72,7 @@ def isHorizontalWin(grille: list[list[int]], index_ligne: int, joueur: int) -> b
             nombre_daffilee = 0
     return False
 
-# Gabriel
+# Gabriel testé
 def trouverDistances(grille: list[list[int]], index_colonne: int, index_ligne: int) -> tuple[int]:
     """
     trouve les distances entre la case [index_colonne][index_ligne] et les 4 bords de la grille
@@ -90,7 +90,7 @@ def trouverDistances(grille: list[list[int]], index_colonne: int, index_ligne: i
     
     return distance_haut, distance_bas, distance_gauche, distance_droite
 
-# Julle test/debug par Gabriel
+# Julle testé
 def isDiagonalBottomLeftToTopRightWin(grille: list[list[int]], index_colonne: int, index_ligne: int, joueur: int) -> bool:
     """
     verifie si un enchainement de 4 jetons n'as pas ete cree dans une diagonale allant de en bas 
@@ -119,7 +119,7 @@ def isDiagonalBottomLeftToTopRightWin(grille: list[list[int]], index_colonne: in
     return False
    
 
-# Cyprien
+# Cyprien testé
 def isDiagonalTopLeftToBottomRightWin(grille: list[list[int]], index_colonne: int, index_ligne: int, joueur: int) -> bool:
     """
     verifie si un enchainement de 4 jetons n'as pas ete cree dans une diagonale allant de en haut 
@@ -159,6 +159,7 @@ def setupJoueur() -> dict:
 
     return joueurs
 
+# Gabriel
 def trouverColonne(nom_joueur: str) -> int:
     """
     choisit la colonne + verifie si valide
