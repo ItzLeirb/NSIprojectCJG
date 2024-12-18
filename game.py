@@ -94,10 +94,24 @@ def setupJoueur() -> dict:
 
     return joueurs
 
-def trouverColonne() -> int:
+def trouverColonne(nom_joueur: str) -> int:
     """
     choisit la colonne + verifie si valide
+
+    Entrée: nom_joueur, le nom du joueur qui choisit la colonne
+    Sortie: le numéro de la colonne
     """
+
+    print(f"Choisis la colonne où tu veux jouer {nom_joueur} (compris entre 0 et 6) :")
+    colonne = int(input(""))
+
+    valides = [i for i in range(7)]
+    while colonne not in valides:
+        print(f"La colonne choisie n'est pas valide. Choisis la colonne où tu veux jouer {nom_joueur} (compris entre 0 et 6) :")
+        colonne = int(input(""))
+    
+    return colonne
+
 
 # Cyprien le best
 def tour():
