@@ -25,9 +25,9 @@ def ajouterJeton(grille: list[list[int]], colonne: int,
     en cas de colonne invalide, le coups doit etre rejoue <- non, fait dans tour()
     sortie : affiche la Liste modifiee (jeton ajoute dans le tableau)
     """
-    for ligne, jeton in enumerate(grille[colonne]):
+    for index_ligne, jeton in enumerate(grille[colonne]):
         if jeton != 0:  #la case de la grille n'est vide
-            grille[colonne][ligne-1] = joueur
+            grille[colonne][index_ligne-1] = joueur
             break
 
 # Gabriel
@@ -60,8 +60,8 @@ def isHorizontalWin(grille: list[list[int]], colonne: int, ligne: int, joueur: i
 def isDiagonalBottomLeftToTopRightWin(grille: list[list[int]], colonne: int, ligne: int, joueur: int) -> bool:
    nombre_daffilee = 0
    for i in range(8):
-    if grille[colonne + 4 - i][ligne - 4 + i] == joueur:
-        nombre_daffilee += 1
+        if grille[colonne + 4 - i][ligne - 4 + i] == joueur:
+            nombre_daffilee += 1
         if nombre_daffilee >= 4:
             return True
     else:
