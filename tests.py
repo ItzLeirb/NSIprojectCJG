@@ -1,5 +1,5 @@
 from game import *
-from main import affichageConsole
+from main import *
 
 # test trouverDistances
 grille = [[0]*6]*7
@@ -278,5 +278,12 @@ for index_colonne, colonne in enumerate(grille):
         grille, _ = ajouterJeton(grille, index_colonne, 1)  # _ est une variable inutile      
 
 assert grille == [[1]*6]*7
+#tests setupJoueur
+
+print(setupJoueur)
+
+# tests trouverColonne
+
+print(trouverColonne("Joueur!!!!!!!!!"))
 
 print('Tous les tests sont passés')
