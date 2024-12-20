@@ -19,11 +19,11 @@ def ajouterJeton(grille: list[list[int]], index_colonne: int,
     renvoie une grille où le jeton du joueur a été joué à une certaine colonne, puis fait "tomber" le jeton.
     ajoute un jeton 1 ou 2 selon le joueur
     
-    entrées : grille: la grille, un tableau (type: list) de listes (type: list) de nombres (type: int) qui représentent les joueurs, 
+    Entrées : grille: la grille, un tableau (type: list) de listes (type: list) de nombres (type: int) qui représentent les joueurs, 
               colonne: la colonne où le joueur a joué (type: int)
               joueur: le numero du joueur (type: int)
             
-    sortie : grille modifiee (jeton ajouté dans le tableau) (type: list de list de int)
+    Sortie : grille modifiee (jeton ajouté dans le tableau) (type: list de list de int)
     """
     for index_ligne, jeton in enumerate(grille[index_colonne] + [5]):
         if jeton != 0:  # la case de la grille n'est vide
@@ -37,12 +37,12 @@ def isVerticalWin(grille: list[list[int]], index_colonne: int, index_ligne: int,
     """
     verifie si un enchainement de 4 jetons a été créé verticalement
     
-    entree : grille (type: list de list de int) le tableau à deux dimensions qui représente la grille, 
-             index_colone (type: int), 
-             index_ligne (type: int),
-             joueur (type: int)
+    Entrée : grille (type: list de list de int) le tableau à deux dimensions qui représente la grille, 
+             index_colonne: (type: int) l'index de la colonne où le dernier jeton a été placé, 
+             index_ligne: (type: int) l'index de la ligne où le dernier jeton a été placé,
+             joueur: (type: int) le numéro du joueur (compris entre 1 et 2)
              
-    sortie: True si 4 jetons sont alignes, False dans l'autre cas
+    Sortie: True si 4 jetons sont alignés, False sinon
     """
     nombre_daffilee = 0
     for jeton in grille[index_colonne][index_ligne:]:
@@ -60,10 +60,10 @@ def isVerticalWin(grille: list[list[int]], index_colonne: int, index_ligne: int,
 def isHorizontalWin(grille: list[list[int]], index_ligne: int, joueur: int) -> bool:
     """
     verifie si un enchainement de 4 jetons n'as pas ete cree horizontalement
-    entree : grille type: list, 
+    Entrée : grille type: list, 
              index_ligne type: int,
              joueur type: int
-    sortie: True si 4 jetons sont alignes, False dans l'autre cas
+    Sortie: True si 4 jetons sont alignes, False dans l'autre cas
     """
     nombre_daffilee = 0
     for index_jeton in range(len(grille)):
@@ -79,10 +79,10 @@ def isHorizontalWin(grille: list[list[int]], index_ligne: int, joueur: int) -> b
 def trouverDistances(grille: list[list[int]], index_colonne: int, index_ligne: int) -> tuple[int]:
     """
     trouve les distances entre la case [index_colonne][index_ligne] et les 4 bords de la grille
-    entree : grille type: list, 
+    Entrée : grille type: list, 
              index_colone type: int, 
              index_ligne type: int,
-    sortie: distance_haut, distance_bas, distance_gauche, distance_droite 
+    Sortie: distance_haut, distance_bas, distance_gauche, distance_droite 
             type: int les distances entre les bords respectifs entre 0 et 4 (compris)
     """
     
@@ -98,11 +98,11 @@ def isDiagonalBottomLeftToTopRightWin(grille: list[list[int]], index_colonne: in
     """
     verifie si un enchainement de 4 jetons n'as pas ete cree dans une diagonale allant de en bas 
     a gauche à en haut a droite 
-    entree : grille type: list, 
+    Entrée : grille type: list, 
              index_colone type: int, 
              index_ligne type: int,
              joueur type: int
-    sortie: True si 4 jetons sont alignes, False dans l'autre cas
+    Sortie: True si 4 jetons sont alignes, False dans l'autre cas
     """
     
     distance_haut, distance_bas, distance_gauche, distance_droite = trouverDistances(grille, index_colonne, index_ligne)
@@ -127,11 +127,11 @@ def isDiagonalTopLeftToBottomRightWin(grille: list[list[int]], index_colonne: in
     """
     verifie si un enchainement de 4 jetons n'as pas ete cree dans une diagonale allant de en haut 
     a gauche a en bas a droite 
-    entree : grille type: list, 
-         index_colone type: int, 
-         index_ligne type: int,
-         joueur type: int
-    sortie: True si 4 jetons sont alignes, False dans l'autre cas
+    Entrée : grille type: list, 
+             index_colone type: int, 
+             index_ligne type: int,
+             joueur type: int
+    Sortie: True si 4 jetons sont alignes, False dans l'autre cas
     """
     
     distance_haut, distance_bas, distance_gauche, distance_droite = trouverDistances(grille, index_colonne, index_ligne)
@@ -153,8 +153,9 @@ def isDiagonalTopLeftToBottomRightWin(grille: list[list[int]], index_colonne: in
 # Gabriel
 def setupJoueur() -> dict:
     """
-    Permet au joueurs de rentrer leurs noms et les associes a un numero grace a un dictionaire
-    sortie: dictionaire 
+    Permet au joueurs de rentrer leurs noms et les associe à un numero dans un dictionaire
+    
+    Sortie: un dictionnaire (type: dict) qui associe à un nombre (type: int) entre 1 et 2 au nom du joueur correspondant
     """
     joueurs = {
         1 : input(f"Nom du joueur {JOUEURS_IMAGE[1]}"),
