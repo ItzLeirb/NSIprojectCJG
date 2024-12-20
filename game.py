@@ -113,20 +113,24 @@ def isDiagonalBottomLeftToTopRightWin(grille: list[list[int]], index_colonne: in
     Sortie: True si 4 jetons sont alignes, False dans l'autre cas
     """
     
+    # Évalue les distances avec trouverDistances()
     distance_haut, distance_bas, distance_gauche, distance_droite = trouverDistances(grille, index_colonne, index_ligne)
     
+    # Calcule la distance diagonale avec les bords de la grille
     ecart_bas_gauche = min(distance_bas, distance_gauche)
     ecart_haut_droite = min(distance_haut, distance_droite)
     
     nombre_daffilee = 0        
+    
+    # Itère à travers la diagonale  de bord à bord 
     for i in range(-ecart_bas_gauche, ecart_haut_droite+1):
+        # Compte le nombre de jetons identiques d'affilée et renvoie True si il y en a 4 ou plus
         if grille[index_colonne + i][index_ligne - i] == joueur:
             nombre_daffilee += 1
             if nombre_daffilee >= 4:
                 return True
         else:
-            nombre_daffilee = 0
-            
+            nombre_daffilee = 0 # Repars à 0 si un jeton autre s'est intercalé
     return False
    
 
@@ -142,19 +146,24 @@ def isDiagonalTopLeftToBottomRightWin(grille: list[list[int]], index_colonne: in
     Sortie: True si 4 jetons sont alignes, False dans l'autre cas
     """
     
+    # Évalue les distances avec trouverDistances()
     distance_haut, distance_bas, distance_gauche, distance_droite = trouverDistances(grille, index_colonne, index_ligne)
     
+    # Calcule la distance diagonale avec les bords de la grille
     ecart_haut_gauche = min(distance_haut, distance_gauche)
     ecart_bas_droite = min(distance_bas, distance_droite)
     
     nombre_daffilee = 0
+    
+    # Itère à travers la diagonale  de bord à bord
     for i in range(-ecart_haut_gauche, ecart_bas_droite+1):
+        # Compte le nombre de jetons identiques d'affilée et renvoie True si il y en a 4 ou plus
         if grille[index_colonne + i][index_ligne + i] == joueur:
             nombre_daffilee += 1
             if nombre_daffilee >= 4:
                 return True
         else:
-            nombre_daffilee = 0
+            nombre_daffilee = 0 # Repars à 0 si un jeton autre s'est intercalé
     return False
         
 
@@ -181,9 +190,11 @@ def trouverColonne(nom_joueur: str) -> int:
     Sortie: le numéro de la colonne (type: int)
     """
 
+    # Demande la colonne où le joueur veut jouer
     print(f"Choisis la colonne où tu veux jouer {nom_joueur} (compris entre 0 et 6) :")
     colonne = int(input(""))
 
+    # Vérifie si la colonne choisie est valide, la redemande si elle ne l'est pas.
     valides = [i for i in range(7)]
     while colonne not in valides:
         print(f"La colonne choisie n'est pas valide. Choisis la colonne où tu veux jouer {nom_joueur} (compris entre 0 et 6) :")
