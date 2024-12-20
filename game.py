@@ -55,7 +55,7 @@ def isVerticalWin(grille: list[list[int]], index_colonne: int, index_ligne: int,
 # Cyprien test ok
 def isHorizontalWin(grille: list[list[int]], index_ligne: int, joueur: int) -> bool:
     """
-    verifie si un enchainement de 4 jeton n'as pas ete cree horizontalement
+    verifie si un enchainement de 4 jetons n'as pas ete cree horizontalement
     entree : grille type: list, 
              index_ligne type: int,
              joueur type: int
