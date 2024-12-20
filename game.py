@@ -34,7 +34,7 @@ def ajouterJeton(grille: list[list[int]], index_colonne: int,
 # Gabriel test ok
 def isVerticalWin(grille: list[list[int]], index_colonne: int, index_ligne: int, joueur: int) -> bool:
     """
-    verifie si un enchainement de 4 jeton n'as pas ete cree verticalement
+    verifie si un enchainement de 4 jetons n'as pas ete cree verticalement
     entree : grille type: list, 
              index_colone type: int, 
              index_ligne type: int,
