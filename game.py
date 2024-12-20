@@ -16,12 +16,14 @@ from settings import *
 def ajouterJeton(grille: list[list[int]], index_colonne: int,
                  joueur: int) -> tuple[list[list[int]], int]:
     """
-    entree : grille: la grille, 
-             colonne: la colonne jouee
-             joueur: le numero du joueur
-    choisir la colonne, le jeton doit tomber ( verifier toutes les [num colone][elt] pour placer le jeton au L[num colone][remplie - 1]
-    ajoute un jeton X ou O selon le joueur
-    sortie : affiche la Liste modifiee (jeton ajoute dans le tableau)
+    renvoie une grille où le jeton du joueur a été joué à une certaine colonne, puis fait "tomber" le jeton.
+    ajoute un jeton 1 ou 2 selon le joueur
+    
+    entrées : grille: la grille, un tableau (type: list) de listes (type: list) de nombres (type: int) qui représentent les joueurs, 
+              colonne: la colonne où le joueur a joué (type: int)
+              joueur: le numero du joueur (type: int)
+            
+    sortie : grille modifiee (jeton ajouté dans le tableau) (type: list de list de int)
     """
     for index_ligne, jeton in enumerate(grille[index_colonne] + [5]):
         if jeton != 0:  # la case de la grille n'est vide
@@ -33,11 +35,13 @@ def ajouterJeton(grille: list[list[int]], index_colonne: int,
 # Gabriel test ok
 def isVerticalWin(grille: list[list[int]], index_colonne: int, index_ligne: int, joueur: int) -> bool:
     """
-    verifie si un enchainement de 4 jetons n'as pas ete cree verticalement
-    entree : grille type: list, 
-             index_colone type: int, 
-             index_ligne type: int,
-             joueur type: int
+    verifie si un enchainement de 4 jetons a été créé verticalement
+    
+    entree : grille (type: list de list de int) le tableau à deux dimensions qui représente la grille, 
+             index_colone (type: int), 
+             index_ligne (type: int),
+             joueur (type: int)
+             
     sortie: True si 4 jetons sont alignes, False dans l'autre cas
     """
     nombre_daffilee = 0
