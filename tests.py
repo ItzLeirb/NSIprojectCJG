@@ -24,7 +24,7 @@ grille = [
 affichageConsole(grille, 1)
 
 
-# test isDiagonalBottomLeftToTopRightWin
+# test isDiagonalBottomLeftToTopRightWin Gabriel
 
 assert isDiagonalBottomLeftToTopRightWin(grille, 3, 2, 2)==True
 grille = [
@@ -78,7 +78,7 @@ grille = [
 ]
 assert isDiagonalBottomLeftToTopRightWin(grille, 2, 3, 1)==False
 
-# test isDiagonalTopLeftToBottomRightWin
+# test isDiagonalTopLeftToBottomRightWin Gabriel
 
 grille = [
     [0, 0, 0, 0, 0, 0],
@@ -142,7 +142,7 @@ grille = [
 assert isDiagonalTopLeftToBottomRightWin(grille, 4, 3, 1)==False
 
 
-# test isVertacalWin
+# test isVertacalWin Cyprien & Jules
 
 grille = [
     [0, 0, 0, 0, 0, 0],
@@ -205,7 +205,7 @@ grille = [
 ]
 assert isVerticalWin(grille, 6, 3, 1)==False
 
-# tests isHorizontalWin()
+# tests isHorizontalWin() Gabriel
 
 grille = [
     [0, 0, 0, 0, 0, 0],
@@ -261,5 +261,21 @@ grille = [
     [0, 0, 0, 0, 0, 0]
 ]
 assert isHorizontalWin(grille, 5, 1)==False
+
+# test ajouterJeton()
+
+grille = [[0]*6]*7
+
+for joueur in [1, 2]:
+    for index_colonne in range(7):
+        g1 = grille
+        g1[index_colonne][-1] = joueur
+        assert ajouterJeton(grille, index_colonne, joueur) == g1
+
+for index_colonne, colonne in enumerate(grille):
+    for index_ligne, jeton in enumerate(colonne):
+        grille = ajouterJeton(grille, index_colonne, 1)        
+
+assert grille == [[1]*6]*7
 
 print('Tous les tests sont passés')
