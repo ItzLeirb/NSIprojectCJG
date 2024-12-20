@@ -151,6 +151,7 @@ def isDiagonalTopLeftToBottomRightWin(grille: list[list[int]], index_colonne: in
 def setupJoueur() -> dict:
     """
     Permet au joueurs de rentrer leurs noms et les associes a un numero grace a un dictionaire
+    sortie: dictionaire 
     """
     joueurs = {
         1 : input(f"Nom du joueur {JOUEURS_IMAGE[1]}"),
