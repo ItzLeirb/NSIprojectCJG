@@ -4,6 +4,11 @@ from settings import *
 
 # Gabriel tests ok
 def affichageConsole(grille: list[list[int]], joueur: int):
+    """
+    affiche l'état actuel de la grille dans la console 
+    Entrée : grille type: list, 
+             joueur type: int
+    """
     print("  | 0 | 1 | 2 | 3 | 4 | 5 | 6 | ")
     for ligne in range(len(grille[0])):
         ligne_texte = f"{ligne} | "
