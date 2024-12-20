@@ -25,7 +25,8 @@ def ajouterJeton(grille: list[list[int]], index_colonne: int,
             
     Sortie : grille modifiee (jeton ajouté dans le tableau) (type: list de list de int)
     """
-    for index_ligne, jeton in enumerate(grille[index_colonne] + [5]):
+    # Itère à travers toute la colonne
+    for index_ligne, jeton in enumerate(grille[index_colonne] + [5]): # Le 5 est arbitraire, mais n'est ni 0, ni 1, ni 2 et marque la fin de la colonne
         if jeton != 0:  # la case de la grille n'est vide
             grille[index_colonne][index_ligne-1] = joueur
             break
@@ -45,16 +46,17 @@ def isVerticalWin(grille: list[list[int]], index_colonne: int, index_ligne: int,
     Sortie: True si 4 jetons sont alignés, False sinon
     """
     nombre_daffilee = 0
+    # Itère à travers la colonne index_colonne à partir de la ligne index_ligne.
     for jeton in grille[index_colonne][index_ligne:]:
-        if jeton == 0: continue
-
+        if jeton == 0: continue # ignore les cases vides (qui ne sont pas censées exister)
+        
+        # Compte le nombre de jetons identiques d'affilée et renvoie True si il y en a 4 ou plus
         if jeton == joueur:
             nombre_daffilee += 1
             if nombre_daffilee >= 4:
                 return True
         else:
-            break
-    return nombre_daffilee >= 4
+            return False # Arrête de compter si un jeton de l'autre joueur s'intercale avant d'avoir 4 jetons alignés.
 
 # Cyprien test ok
 def isHorizontalWin(grille: list[list[int]], index_ligne: int, joueur: int) -> bool:
@@ -66,19 +68,24 @@ def isHorizontalWin(grille: list[list[int]], index_ligne: int, joueur: int) -> b
     Sortie: True si 4 jetons sont alignes, False dans l'autre cas
     """
     nombre_daffilee = 0
+    
+    # Itère à travers la ligne jouée
     for index_jeton in range(len(grille)):
+        # Compte le nombre de jetons identiques d'affilée et renvoie True si il y en a 4 ou plus
         if grille[index_jeton][index_ligne] == joueur:
             nombre_daffilee += 1
             if nombre_daffilee >= 4:
                 return True
         else:
-            nombre_daffilee = 0
+            nombre_daffilee = 0 # Repars à 0 si un jeton manque
+            
     return False
 
 # Gabriel test ok
 def trouverDistances(grille: list[list[int]], index_colonne: int, index_ligne: int) -> tuple[int]:
     """
-    trouve les distances entre la case [index_colonne][index_ligne] et les 4 bords de la grille
+    Trouve les distances entre la case [index_colonne][index_ligne] et les 4 bords de la grille
+    
     Entrée : grille type: list, 
              index_colone type: int, 
              index_ligne type: int,
@@ -86,6 +93,7 @@ def trouverDistances(grille: list[list[int]], index_colonne: int, index_ligne: i
             type: int les distances entre les bords respectifs entre 0 et 4 (compris)
     """
     
+    # Calcule séparément les distances
     distance_haut = min(index_ligne, 4)
     distance_bas = min(len(grille[index_colonne])-1 - index_ligne, 4)
     distance_gauche = min(index_colonne, 4)
@@ -93,7 +101,7 @@ def trouverDistances(grille: list[list[int]], index_colonne: int, index_ligne: i
     
     return distance_haut, distance_bas, distance_gauche, distance_droite
 
-# Julle testé
+# Julle test ok
 def isDiagonalBottomLeftToTopRightWin(grille: list[list[int]], index_colonne: int, index_ligne: int, joueur: int) -> bool:
     """
     verifie si un enchainement de 4 jetons n'as pas ete cree dans une diagonale allant de en bas 
