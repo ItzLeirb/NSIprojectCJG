@@ -167,10 +167,10 @@ def setupJoueur() -> dict:
 # Gabriel
 def trouverColonne(nom_joueur: str) -> int:
     """
-    choisit la colonne + verifie si valide
+    Demande au joueur actuel la colonne dans laquelle il veut jouer, et vérifie si elle est valide
 
-    Entrée: nom_joueur, le nom du joueur qui choisit la colonne
-    Sortie: le numéro de la colonne
+    Entrée: nom_joueur: (type: str) le nom du joueur qui choisit la colonne
+    Sortie: le numéro de la colonne (type: int)
     """
 
     print(f"Choisis la colonne où tu veux jouer {nom_joueur} (compris entre 0 et 6) :")
