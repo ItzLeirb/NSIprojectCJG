@@ -262,4 +262,12 @@ grille = [
 ]
 assert isHorizontalWin(grille, 5, 1)==False
 
+#tests setupJoueur
+
+print(setupJoueur)
+
+# tests trouverColonne
+
+print(trouverColonne(Julle))
+
 print('Tous les tests sont passés')

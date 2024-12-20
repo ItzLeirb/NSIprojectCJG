@@ -2,7 +2,7 @@
 from game import *
 from settings import *
 
-# Gabriel
+# Gabriel tests ok
 def affichageConsole(grille: list[list[int]], joueur: int):
     print("  | 0 | 1 | 2 | 3 | 4 | 5 | 6 | ")
     for ligne in range(len(grille[0])):
