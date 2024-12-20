@@ -21,11 +21,10 @@ def ajouterJeton(grille: list[list[int]], index_colonne: int,
              joueur: le numero du joueur
     choisir la colonne, le jeton   doit tomber ( verifier toutes les [num colone][elt] pour placer le jeton au L[num colone][remplie - 1]
     ajoute un jeton X ou O selon le joueur
-    en cas de colonne invalide, le coups doit etre rejoue <- non, fait dans tour()
     sortie : affiche la Liste modifiee (jeton ajoute dans le tableau)
     """
-    for index_ligne, jeton in enumerate(grille[index_colonne]):
-        if jeton != 0:  #la case de la grille n'est vide
+    for index_ligne, jeton in enumerate(grille[index_colonne] + [5]):
+        if jeton != 0:  # la case de la grille n'est vide
             grille[index_colonne][index_ligne-1] = joueur
             break
 

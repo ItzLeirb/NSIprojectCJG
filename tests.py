@@ -264,17 +264,18 @@ assert isHorizontalWin(grille, 5, 1)==False
 
 # test ajouterJeton()
 
-grille = [[0]*6]*7
-
 for joueur in [1, 2]:
     for index_colonne in range(7):
-        g1 = grille
+        g1 = [[0]*6 for i in range(7)]
         g1[index_colonne][-1] = joueur
-        assert ajouterJeton(grille, index_colonne, joueur) == g1
+        # print(f"{ajouterJeton([[0]*6 for i in range(7)], index_colonne, joueur)}, {index_colonne}, {joueur}")
+        assert ajouterJeton([[0]*6 for i in range(7)], index_colonne, joueur) == (g1, 5)
+
+grille = [[0]*6 for i in range(7)]
 
 for index_colonne, colonne in enumerate(grille):
     for index_ligne, jeton in enumerate(colonne):
-        grille = ajouterJeton(grille, index_colonne, 1)        
+        grille, _ = ajouterJeton(grille, index_colonne, 1)  # _ est une variable inutile      
 
 assert grille == [[1]*6]*7
 
