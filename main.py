@@ -5,7 +5,7 @@ from settings import *
 # Gabriel tests ok
 def affichageConsole(grille: list[list[int]], joueur: int):
     """
-    affiche l'etat actuel de la grille dans la console 
+    affiche l'état actuel de la grille dans la console 
     Entrée : grille type: list, 
              joueur type: int
     """
