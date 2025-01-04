@@ -282,7 +282,13 @@ assert grille == [[1]*6]*7
 
 print(setupJoueur) 
 
-# Resultat du test 1 : Entree : , ; Sortie : ,
+# Resultat du test 1 : Entree : "aaaaaa" , "b" ; Resultat attendu : {1: 'aaaaaa', 2: 'b'} ; Sortie : --> test reussi
+# Resultat du test 2 : Entree : "11" , "11" ; Resultat attendu : {1: '11', 2: '11'} ; Sortie : --> test reussi
+# Resultat du test 3 : Entree : "BBB" , "AAA" ; Resultat attendu : {1: 'BBB', 2: 'AAA'} ; Sortie : --> test reussi
+# Resultat du test 4 : Entree : "11" , "aAa" ; Resultat attendu : {1: '11', 2: 'aAa'} ; Sortie : --> test reussi
+# Resultat du test  : Entree : "!!!:;" , "^$,?!" ; Resultat attendu : {1: '!!!:;', 2: '^$,?!'} ; Sortie : --> test reussi
+
+
 
 
 
