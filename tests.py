@@ -278,9 +278,13 @@ for index_colonne, colonne in enumerate(grille):
         grille, _ = ajouterJeton(grille, index_colonne, 1)  # _ est une variable inutile      
 
 assert grille == [[1]*6]*7
-#tests setupJoueur
+#tests setupJoueur : Cyprien --> il est genial
 
-print(setupJoueur)
+print(setupJoueur) 
+
+# Resultat du test 1 : Entree : , ; Sortie : ,
+
+
 
 # tests trouverColonne
 
