@@ -205,7 +205,7 @@ grille = [
 ]
 assert isVerticalWin(grille, 6, 3, 1)==False
 
-# tests isHorizontalWin() Gabriel
+# tests isHorizontalWin() Jules
 
 grille = [
     [0, 0, 0, 0, 0, 0],
@@ -292,8 +292,19 @@ print(setupJoueur)
 
 
 
-# tests trouverColonne
+# tests trouverColonne Cyprien
 
 print(trouverColonne("Joueur!!!!!!!!!"))
+
+# Resultat du test 1 : Entree : 0 ; Resultat attendu : 0 ; Sortie : --> test reussi
+# Resultat du test 2 : Entree : 3 ; Resultat attendu : 3 ; Sortie : --> test reussi
+# Resultat du test 3 : Entree : 6 ; Resultat attendu : 6 ; Sortie : --> test reussi
+# Resultat du test 4 : Entree : -1 ; Resultat attendu : demande au joueur de rentrer une colonne valide ; Sortie : --> test reussi
+# Resultat du test 5 : Entree : 7 ; Resultat attendu : demande au joueur de rentrer une colonne valide ; Sortie : --> test reussi
+
+
+
+
+
 
 print('Tous les tests sont passés')
