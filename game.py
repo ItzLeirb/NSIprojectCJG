@@ -57,6 +57,7 @@ def isVerticalWin(grille: list[list[int]], index_colonne: int, index_ligne: int,
                 return True
         else:
             return False # Arrête de compter si un jeton de l'autre joueur s'intercale avant d'avoir 4 jetons alignés.
+    return False
 
 # Cyprien test ok
 def isHorizontalWin(grille: list[list[int]], index_ligne: int, joueur: int) -> bool:
