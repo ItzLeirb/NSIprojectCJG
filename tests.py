@@ -205,7 +205,7 @@ grille = [
 ]
 assert isVerticalWin(grille, 6, 3, 1)==False
 
-# tests isHorizontalWin() Gabriel
+# tests isHorizontalWin() Jules
 
 grille = [
     [0, 0, 0, 0, 0, 0],
@@ -282,16 +282,29 @@ assert grille == [[1]*6]*7
 
 print(setupJoueur()) 
 
-# Resultat du test 1 : Entree : , ; Sortie : ,
-# "Jean" ; "Michel" ; {1: 'Jean', 2: 'Michel'} OK
-# "" ; " " ; 
-#
-#
-#
+# Resultat du test 1 : Entree : "aaaaaa" , "b" ; Resultat attendu : {1: 'aaaaaa', 2: 'b'} ; Sortie : --> test reussi
+# Resultat du test 2 : Entree : "11" , "11" ; Resultat attendu : {1: '11', 2: '11'} ; Sortie : --> test reussi
+# Resultat du test 3 : Entree : "BBB" , "AAA" ; Resultat attendu : {1: 'BBB', 2: 'AAA'} ; Sortie : --> test reussi
+# Resultat du test 4 : Entree : "11" , "aAa" ; Resultat attendu : {1: '11', 2: 'aAa'} ; Sortie : --> test reussi
+# Resultat du test  : Entree : "!!!:;" , "^$,?!" ; Resultat attendu : {1: '!!!:;', 2: '^$,?!'} ; Sortie : --> test reussi
 
 
-# tests trouverColonne
 
-print(trouverColonne("Joueur!!!!!!!!!"))
+
+
+# tests trouverColonne Cyprien
+
+# print(trouverColonne("Joueur!!!!!!!!!"))
+
+# Resultat du test 1 : Entree : 0 ; Resultat attendu : 0 ; Sortie : 0 --> test reussi
+# Resultat du test 2 : Entree : 3 ; Resultat attendu : 3 ; Sortie : 3 --> test reussi
+# Resultat du test 3 : Entree : 6 ; Resultat attendu : 6 ; Sortie : 6 --> test reussi
+# Resultat du test 4 : Entree : -1 ; Resultat attendu : demande au joueur de rentrer une colonne valide ; Sortie : demande au joueur de rentrer une colonne valide --> test reussi
+# Resultat du test 5 : Entree : 7 ; Resultat attendu : demande au joueur de rentrer une colonne valide ; Sortie : demande au joueur de rentrer une colonne valide --> test reussi
+
+
+
+
+
 
 print('Tous les tests sont passés')
