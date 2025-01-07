@@ -292,9 +292,7 @@ assert grille == [[1]*6]*7
 
 # tests setupJoueur : Cyprien 
 
-print(setupJoueur()) 
-print(setupJoueur()) 
-print(setupJoueur()) 
+# print(setupJoueur())
 
 # Resultat du test 1 : Entree : "aaaaaa" , "b" ; Resultat attendu : {1: 'aaaaaa', 2: 'b'} ; Sortie : {1: 'aaaaaa', 2: 'b'} --> test reussi
 # Resultat du test 2 : Entree : "11" , "11" ; Resultat attendu : {1: '11', 2: '11'} ; Sortie : {1: '11', 2: '11'} --> test reussi
