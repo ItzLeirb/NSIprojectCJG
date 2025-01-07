@@ -281,13 +281,13 @@ assert grille == [[1]*6]*7
 
 # tests trouverNom : Gabriel
 
-print(trouverNom(1))
-print(trouverNom(2))
+# print(trouverNom(1))
+# print(trouverNom(2))
 
 # Resultat du test 1 : Entree : "aaaaaa" ; Resultat attendu : "aaaaaa" ; Sortie : "aaaaaa" --> test reussi
 # Resultat du test 2 : Entree : "11" ; Resultat attendu : "11" ; Sortie : "11" --> test reussi
-# Resultat du test 3 : Entree : "" , "A" ; Resultat attendu : "A" ; Sortie : "A" --> test reussi
-# Resultat du test 3 : Entree : "" , "" , "A" ; Resultat attendu : "A" ; Sortie : "A" --> test reussi
+# Resultat du test 3 : Entree : "" , "A" ; Resultat attendu : "A" avec une demande de réentrer un nom ; Sortie : "A" avec une demande de réentrer un nom --> test reussi
+# Resultat du test 3 : Entree : "" , "" , "A" ; Resultat attendu : "A" avec deux demandes de réentrer un nom ; Sortie : "A" avec deux demandes de réentrer un nom --> test reussi
 
 
 # tests setupJoueur : Cyprien 
@@ -298,11 +298,9 @@ print(setupJoueur())
 
 # Resultat du test 1 : Entree : "aaaaaa" , "b" ; Resultat attendu : {1: 'aaaaaa', 2: 'b'} ; Sortie : {1: 'aaaaaa', 2: 'b'} --> test reussi
 # Resultat du test 2 : Entree : "11" , "11" ; Resultat attendu : {1: '11', 2: '11'} ; Sortie : {1: '11', 2: '11'} --> test reussi
-# Resultat du test 3 : Entree : "BBB" , "AAA" ; Resultat attendu : {1: 'BBB', 2: 'AAA'} ; Sortie : --> test reussi
-# Resultat du test 4 : Entree : "11" , "aAa" ; Resultat attendu : {1: '11', 2: 'aAa'} ; Sortie : --> test reussi
-# Resultat du test 5 : Entree : "!!!:;" , "^$,?!" ; Resultat attendu : {1: '!!!:;', 2: '^$,?!'} ; Sortie : --> test reussi
-
-
+# Resultat du test 3 : Entree : "BBB" , "AAA" ; Resultat attendu : {1: 'BBB', 2: 'AAA'} ; Sortie : {1: 'BBB', 2: 'AAA'} --> test reussi
+# Resultat du test 4 : Entree : "11" , "aAa" ; Resultat attendu : {1: '11', 2: 'aAa'} ; Sortie : {1: '11', 2: 'aAa'} --> test reussi
+# Resultat du test 5 : Entree : "!!!:;" , "^$,?!" ; Resultat attendu : {1: '!!!:;', 2: '^$,?!'} ; Sortie : {1: '111:;', 2: '^$,?!'} --> test reussi
 
 
 
