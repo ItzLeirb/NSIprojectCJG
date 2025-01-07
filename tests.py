@@ -280,10 +280,14 @@ for index_colonne, colonne in enumerate(grille):
 assert grille == [[1]*6]*7
 #tests setupJoueur : Cyprien --> il est genial
 
-print(setupJoueur) 
+print(setupJoueur()) 
 
 # Resultat du test 1 : Entree : , ; Sortie : ,
-
+# "Jean" ; "Michel" ; {1: 'Jean', 2: 'Michel'} OK
+# "" ; " " ; 
+#
+#
+#
 
 
 # tests trouverColonne
