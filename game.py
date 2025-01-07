@@ -16,14 +16,15 @@ from settings import *
 def ajouterJeton(grille: list[list[int]], index_colonne: int,
                  joueur: int) -> tuple[list[list[int]], int]:
     """
-    renvoie une grille où le jeton du joueur a été joué à une certaine colonne, puis fait "tomber" le jeton.
+    Renvoie une grille où le jeton du joueur a été joué à une certaine colonne, puis fait "tomber" le jeton.
     ajoute un jeton 1 ou 2 selon le joueur
     
-    Entrées : grille: la grille, un tableau (type: list) de listes (type: list) de nombres (type: int) qui représentent les joueurs, 
-              colonne: la colonne où le joueur a joué (type: int)
-              joueur: le numero du joueur (type: int)
+    Entrées:   
+        grille: la grille, un tableau (type: list) de listes (type: list) de nombres (type: int) qui représentent les joueurs, 
+        colonne: la colonne où le joueur a joué (type: int)
+        joueur: le numero du joueur (type: int)
             
-    Sortie : grille modifiee (jeton ajouté dans le tableau) (type: list de list de int)
+    Sortie: grille modifiee (jeton ajouté dans le tableau) (type: list de list de int)
     """
     # Itère à travers toute la colonne
     for index_ligne, jeton in enumerate(grille[index_colonne] + [5]): # Le 5 est arbitraire, mais n'est ni 0, ni 1, ni 2 et marque la fin de la colonne
@@ -36,14 +37,16 @@ def ajouterJeton(grille: list[list[int]], index_colonne: int,
 # Gabriel test ok
 def isVerticalWin(grille: list[list[int]], index_colonne: int, index_ligne: int, joueur: int) -> bool:
     """
-    verifie si un enchainement de 4 jetons a été créé verticalement
+    Vérifie si un enchainement de 4 jetons a été créé verticalement
     
-    Entrée : grille (type: list de list de int) le tableau à deux dimensions qui représente la grille, 
-             index_colonne: (type: int) l'index de la colonne où le dernier jeton a été placé, 
-             index_ligne: (type: int) l'index de la ligne où le dernier jeton a été placé,
-             joueur: (type: int) le numéro du joueur (compris entre 1 et 2)
+    Entrée: 
+        grille (type: list de list de int) le tableau à deux dimensions qui représente la grille, 
+        index_colonne: (type: int) l'index de la colonne où le dernier jeton a été placé, 
+        index_ligne: (type: int) l'index de la ligne où le dernier jeton a été placé,
+        joueur: (type: int) le numéro du joueur (compris entre 1 et 2)
              
-    Sortie: True si 4 jetons sont alignés, False sinon
+    Sortie: 
+        True si 4 jetons sont alignés, False sinon
     """
     nombre_daffilee = 0
     # Itère à travers la colonne index_colonne à partir de la ligne index_ligne.
@@ -62,11 +65,14 @@ def isVerticalWin(grille: list[list[int]], index_colonne: int, index_ligne: int,
 # Cyprien test ok
 def isHorizontalWin(grille: list[list[int]], index_ligne: int, joueur: int) -> bool:
     """
-    verifie si un enchainement de 4 jetons n'as pas ete cree horizontalement
-    Entrée : grille type: list, 
-             index_ligne type: int,
-             joueur type: int
-    Sortie: True si 4 jetons sont alignes, False dans l'autre cas
+    Vérifie si un enchainement de 4 jetons n'as pas ete cree horizontalement
+    
+    Entrée: 
+        grille type: list, 
+        index_ligne type: int,
+        joueur type: int
+    Sortie: 
+        True si 4 jetons sont alignes, False dans l'autre cas
     """
     nombre_daffilee = 0
     
@@ -87,11 +93,13 @@ def trouverDistances(grille: list[list[int]], index_colonne: int, index_ligne: i
     """
     Trouve les distances entre la case [index_colonne][index_ligne] et les 4 bords de la grille
     
-    Entrée : grille type: list, 
-             index_colone type: int, 
-             index_ligne type: int,
-    Sortie: distance_haut, distance_bas, distance_gauche, distance_droite 
-            type: int les distances entre les bords respectifs entre 0 et 4 (compris)
+    Entrée: 
+        grille type: list, 
+        index_colone type: int, 
+        index_ligne type: int,
+    Sortie: 
+        distance_haut, distance_bas, distance_gauche, distance_droite 
+        type: int les distances entre les bords respectifs entre 0 et 4 (compris)
     """
     
     # Calcule séparément les distances
@@ -105,13 +113,16 @@ def trouverDistances(grille: list[list[int]], index_colonne: int, index_ligne: i
 # Julle test ok
 def isDiagonalBottomLeftToTopRightWin(grille: list[list[int]], index_colonne: int, index_ligne: int, joueur: int) -> bool:
     """
-    verifie si un enchainement de 4 jetons n'as pas ete cree dans une diagonale allant de en bas 
+    Vérifie si un enchainement de 4 jetons n'as pas ete cree dans une diagonale allant de en bas 
     a gauche à en haut a droite 
-    Entrée : grille type: list, 
-             index_colone type: int, 
-             index_ligne type: int,
-             joueur type: int
-    Sortie: True si 4 jetons sont alignes, False dans l'autre cas
+    
+    Entrée: 
+        grille type: list, 
+        index_colone type: int, 
+        index_ligne type: int,
+        joueur type: int
+    Sortie: 
+        True si 4 jetons sont alignes, False dans l'autre cas
     """
     
     # Évalue les distances avec trouverDistances()
@@ -138,13 +149,16 @@ def isDiagonalBottomLeftToTopRightWin(grille: list[list[int]], index_colonne: in
 # Cyprien test ok
 def isDiagonalTopLeftToBottomRightWin(grille: list[list[int]], index_colonne: int, index_ligne: int, joueur: int) -> bool:
     """
-    verifie si un enchainement de 4 jetons n'as pas ete cree dans une diagonale allant de en haut 
+    Vérifie si un enchainement de 4 jetons n'as pas ete cree dans une diagonale allant de en haut 
     a gauche a en bas a droite 
-    Entrée : grille type: list, 
-             index_colone type: int, 
-             index_ligne type: int,
-             joueur type: int
-    Sortie: True si 4 jetons sont alignes, False dans l'autre cas
+    
+    Entrée: 
+        grille type: list, 
+        index_colone type: int, 
+        index_ligne type: int,
+        joueur type: int
+    Sortie: 
+        True si 4 jetons sont alignes, False dans l'autre cas
     """
     
     # Évalue les distances avec trouverDistances()
@@ -166,18 +180,34 @@ def isDiagonalTopLeftToBottomRightWin(grille: list[list[int]], index_colonne: in
         else:
             nombre_daffilee = 0 # Repars à 0 si un jeton autre s'est intercalé
     return False
-        
+
+def trouverNom(index_joueur: int):
+    """
+    Permet au joueur d'entrer son nom et vérifie s'il est correct (non vide)
+    
+    Entrée:
+        index_joueur: (type: int), l'index du joueur (1 ou 2)
+    Sortie:
+        une chaine de caractère (type: string) le nom final du joueur
+    """
+    nom_joueur = input(f'Nom du joueur {JOUEURS_IMAGE[index_joueur]}: ')
+    while nom_joueur == "":
+        nom_joueur = input(f'Le nom ne doit pas être vide, entrer le nom du joueur {JOUEURS_IMAGE[index_joueur]}: ')
+
+    return nom_joueur
 
 # Gabriel
 def setupJoueur() -> dict:
     """
     Permet au joueurs de rentrer leurs noms et les associe à un numero dans un dictionaire
     
-    Sortie: un dictionnaire (type: dict) qui associe à un nombre (type: int) entre 1 et 2 au nom du joueur correspondant
+    Sortie: 
+        un dictionnaire (type: dict) qui associe à un nombre (type: int) entre 1 et 2 au nom du joueur correspondant
     """
+    
     joueurs = {
-        1 : input(f"Nom du joueur {JOUEURS_IMAGE[1]}"),
-        2 : input(f"Nom du joueur {JOUEURS_IMAGE[2]}")
+        1 : trouverNom(1),
+        2 : trouverNom(2)
     }
 
     return joueurs
@@ -187,18 +217,20 @@ def trouverColonne(nom_joueur: str) -> int:
     """
     Demande au joueur actuel la colonne dans laquelle il veut jouer, et vérifie si elle est valide
 
-    Entrée: nom_joueur: (type: str) le nom du joueur qui choisit la colonne
-    Sortie: le numéro de la colonne (type: int)
+    Entrée: 
+        nom_joueur: (type: str) le nom du joueur qui choisit la colonne
+    Sortie: 
+        le numéro de la colonne (type: int)
     """
 
     # Demande la colonne où le joueur veut jouer
-    print(f"Choisis la colonne où tu veux jouer {nom_joueur} (compris entre 0 et 6) :")
+    print(f"Choisis la colonne où tu veux jouer {nom_joueur} (compris entre 0 et 6):")
     colonne = int(input(""))
 
     # Vérifie si la colonne choisie est valide, la redemande si elle ne l'est pas.
     valides = [i for i in range(7)]
     while colonne not in valides:
-        print(f"La colonne choisie n'est pas valide. Choisis la colonne où tu veux jouer {nom_joueur} (compris entre 0 et 6) :")
+        print(f"La colonne choisie n'est pas valide. Choisis la colonne où tu veux jouer {nom_joueur} (compris entre 0 et 6):")
         colonne = int(input(""))
     
     return colonne
