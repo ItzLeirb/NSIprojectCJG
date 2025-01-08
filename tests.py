@@ -21,7 +21,7 @@ grille = [
     [0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0]
 ]
-affichageConsole(grille, 1)
+affichageConsole(grille, 1, {1: 'a', 2: 'b'})
 
 
 # test detecterVictoireBasGaucheHautDroite Gabriel
@@ -211,12 +211,12 @@ grille = [
     [0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 1],
-    [0, 0, 0, 0, 0, 1],
-    [0, 0, 0, 0, 0, 1],
-    [0, 0, 0, 0, 0, 1]
+    [0, 0, 0, 0, 1, 0],
+    [0, 0, 0, 0, 1, 0],
+    [0, 0, 0, 0, 1, 0],
+    [0, 0, 0, 0, 1, 0]
 ]
-assert detecterVictoireHorizontale(grille, 5, 1)==True
+assert detecterVictoireHorizontale(grille, 4, 1)==True
 
 grille = [
     [0, 0, 0, 0, 0, 1],

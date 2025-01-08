@@ -3,11 +3,14 @@ from game import *
 from settings import *
 
 # Gabriel tests ok
-def affichageConsole(grille: list[list[int]], joueur: int):
+def affichageConsole(grille: list[list[int]], joueur: int, noms_joueurs: dict):
     """
-    affiche l'état actuel de la grille dans la console 
-    Entrée : grille type: list, 
-             joueur type: int
+    Affiche l'etat actuel de la grille dans la console 
+    
+    Entrée : 
+        grille (type: list de list d'int) la grille, 
+        joueur (type: int) l'index du joueur,
+        noms_joueurs (type: dict) le dictionnaire des noms des joueurs 
     """
     print("  | 0 | 1 | 2 | 3 | 4 | 5 | 6 | ")
     for ligne in range(len(grille[0])):
@@ -17,7 +20,7 @@ def affichageConsole(grille: list[list[int]], joueur: int):
         print(ligne_texte)
     
     print("")
-    print(f"Au tour du joueur {joueur % 2 + 1}")
+    print(f"Au tour du joueur {noms_joueurs[joueur]}")
     
 
 # Gabriel
@@ -83,8 +86,8 @@ def jeu():
     Coordonne les différentes fonctions pour faire fonctioner le jeu.
     """
     # Création de la grille, mise en place des variables importantes
-    grille = [[0]*6]*7
-    joueurs = setupJoueur()
+    grille = [[0 for i in range(6)] for i in range(7)]
+    noms_joueurs = setupJoueur()
     running = True
     joueur = 0
     nombre_coups = 0
@@ -95,9 +98,11 @@ def jeu():
         joueur += 1
         if joueur > 2:
             joueur = 1
+            
+        affichageConsole(grille, joueur, noms_joueurs)
 
         # Fait jouer le joueur
-        index_colonne = trouverColonne(joueurs[joueur])
+        index_colonne = trouverColonne(noms_joueurs[joueur])
         grille, index_ligne = ajouterJeton(grille, index_colonne, joueur)
 
         # Vérifie si la partie est finie (victoire ou match nul)
