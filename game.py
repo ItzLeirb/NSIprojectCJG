@@ -35,7 +35,7 @@ def ajouterJeton(grille: list[list[int]], index_colonne: int,
     return grille, index_ligne-1
 
 # Gabriel test ok
-def isVerticalWin(grille: list[list[int]], index_colonne: int, index_ligne: int, joueur: int) -> bool:
+def detecterVictoireVerticale(grille: list[list[int]], index_colonne: int, index_ligne: int, joueur: int) -> bool:
     """
     Vérifie si un enchainement de 4 jetons a été créé verticalement
     
@@ -63,7 +63,7 @@ def isVerticalWin(grille: list[list[int]], index_colonne: int, index_ligne: int,
     return False
 
 # Cyprien test ok
-def isHorizontalWin(grille: list[list[int]], index_ligne: int, joueur: int) -> bool:
+def detecterVictoireHorizontale(grille: list[list[int]], index_ligne: int, joueur: int) -> bool:
     """
     Vérifie si un enchainement de 4 jetons n'as pas ete cree horizontalement
     
@@ -111,7 +111,7 @@ def trouverDistances(grille: list[list[int]], index_colonne: int, index_ligne: i
     return distance_haut, distance_bas, distance_gauche, distance_droite
 
 # Julle test ok
-def isDiagonalBottomLeftToTopRightWin(grille: list[list[int]], index_colonne: int, index_ligne: int, joueur: int) -> bool:
+def detecterVictoireBasGaucheHautDroite(grille: list[list[int]], index_colonne: int, index_ligne: int, joueur: int) -> bool:
     """
     Vérifie si un enchainement de 4 jetons n'as pas ete cree dans une diagonale allant de en bas 
     a gauche à en haut a droite 
@@ -147,7 +147,7 @@ def isDiagonalBottomLeftToTopRightWin(grille: list[list[int]], index_colonne: in
    
 
 # Cyprien test ok
-def isDiagonalTopLeftToBottomRightWin(grille: list[list[int]], index_colonne: int, index_ligne: int, joueur: int) -> bool:
+def detecterVictoireHautGaucheBasDroite(grille: list[list[int]], index_colonne: int, index_ligne: int, joueur: int) -> bool:
     """
     Vérifie si un enchainement de 4 jetons n'as pas ete cree dans une diagonale allant de en haut 
     a gauche a en bas a droite 

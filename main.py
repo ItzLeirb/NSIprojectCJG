@@ -102,7 +102,7 @@ def jeu():
 
         # Vérifie si la partie est finie (victoire ou match nul)
         nombre_coups += 1
-        if isVerticalWin(grille, index_colonne, index_ligne, joueur) == True or isHorizontalWin(grille, index_ligne, joueur) == True or isDiagonalBottomLeftToTopRightWin(grille, index_colonne, index_ligne, joueur) == True or isDiagonalTopLeftToBottomRightWin(grille, index_colonne, index_ligne, joueur) == True: 
+        if detecterVictoireVerticale(grille, index_colonne, index_ligne, joueur) == True or detecterVictoireHorizontale(grille, index_ligne, joueur) == True or detecterVictoireBasGaucheHautDroite(grille, index_colonne, index_ligne, joueur) == True or detecterVictoireHautGaucheBasDroite(grille, index_colonne, index_ligne, joueur) == True: 
             running == False
         elif nombre_coups >= 42:
             running == False

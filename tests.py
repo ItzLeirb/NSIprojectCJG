@@ -24,9 +24,9 @@ grille = [
 affichageConsole(grille, 1)
 
 
-# test isDiagonalBottomLeftToTopRightWin Gabriel
+# test detecterVictoireBasGaucheHautDroite Gabriel
 
-assert isDiagonalBottomLeftToTopRightWin(grille, 3, 2, 2)==True
+assert detecterVictoireBasGaucheHautDroite(grille, 3, 2, 2)==True
 grille = [
     [0, 0, 0, 0, 0, 2],
     [0, 0, 0, 0, 2, 1],
@@ -36,7 +36,7 @@ grille = [
     [0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0]
 ]
-assert isDiagonalBottomLeftToTopRightWin(grille, 3, 2, 2)==False
+assert detecterVictoireBasGaucheHautDroite(grille, 3, 2, 2)==False
 grille = [
     [0, 0, 0, 0, 0, 2],
     [0, 0, 0, 0, 1, 1],
@@ -46,7 +46,7 @@ grille = [
     [2, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0]
 ]
-assert isDiagonalBottomLeftToTopRightWin(grille, 2, 3, 2)==True
+assert detecterVictoireBasGaucheHautDroite(grille, 2, 3, 2)==True
 grille = [
     [0, 0, 0, 0, 0, 2],
     [0, 0, 0, 0, 1, 1],
@@ -56,7 +56,7 @@ grille = [
     [1, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0]
 ]
-assert isDiagonalBottomLeftToTopRightWin(grille, 2, 3, 1)==True
+assert detecterVictoireBasGaucheHautDroite(grille, 2, 3, 1)==True
 grille = [
     [0, 0, 0, 0, 0, 1],
     [0, 0, 0, 0, 1, 1],
@@ -66,7 +66,7 @@ grille = [
     [1, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0]
 ]
-assert isDiagonalBottomLeftToTopRightWin(grille, 2, 3, 1)==True
+assert detecterVictoireBasGaucheHautDroite(grille, 2, 3, 1)==True
 grille = [
     [0, 0, 0, 0, 0, 1],
     [0, 0, 0, 0, 1, 1],
@@ -76,9 +76,9 @@ grille = [
     [1, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0]
 ]
-assert isDiagonalBottomLeftToTopRightWin(grille, 2, 3, 1)==False
+assert detecterVictoireBasGaucheHautDroite(grille, 2, 3, 1)==False
 
-# test isDiagonalTopLeftToBottomRightWin Gabriel
+# test detecterVictoireHautGaucheBasDroite Gabriel
 
 grille = [
     [0, 0, 0, 0, 0, 0],
@@ -89,7 +89,7 @@ grille = [
     [0, 0, 0, 0, 2, 1],
     [0, 0, 0, 0, 0, 2]
 ]
-assert isDiagonalTopLeftToBottomRightWin(grille, 3, 2, 2)==True
+assert detecterVictoireHautGaucheBasDroite(grille, 3, 2, 2)==True
 grille = [
     [0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0],
@@ -99,7 +99,7 @@ grille = [
     [0, 0, 0, 0, 2, 1],
     [0, 0, 0, 0, 0, 2]
 ]
-assert isDiagonalTopLeftToBottomRightWin(grille, 3, 2, 2)==False
+assert detecterVictoireHautGaucheBasDroite(grille, 3, 2, 2)==False
 grille = [
     [0, 0, 0, 0, 0, 0],
     [2, 0, 0, 0, 0, 0],
@@ -109,7 +109,7 @@ grille = [
     [0, 0, 0, 0, 1, 1],
     [0, 0, 0, 0, 0, 2]
 ]
-assert isDiagonalTopLeftToBottomRightWin(grille, 4, 3, 2)==True
+assert detecterVictoireHautGaucheBasDroite(grille, 4, 3, 2)==True
 grille = [
     [0, 0, 0, 0, 0, 0],
     [1, 0, 0, 0, 0, 0],
@@ -119,7 +119,7 @@ grille = [
     [0, 0, 0, 0, 1, 1],
     [0, 0, 0, 0, 0, 2]
 ]
-assert isDiagonalTopLeftToBottomRightWin(grille, 4, 3, 1)==True
+assert detecterVictoireHautGaucheBasDroite(grille, 4, 3, 1)==True
 grille = [
     [0, 0, 0, 0, 0, 0],
     [1, 0, 0, 0, 0, 0],
@@ -129,7 +129,7 @@ grille = [
     [0, 0, 0, 0, 1, 1],
     [0, 0, 0, 0, 0, 1]
 ]
-assert isDiagonalTopLeftToBottomRightWin(grille, 4, 3, 1)==True
+assert detecterVictoireHautGaucheBasDroite(grille, 4, 3, 1)==True
 grille = [
     [0, 0, 0, 0, 0, 0],
     [1, 0, 0, 0, 0, 0],
@@ -139,7 +139,7 @@ grille = [
     [0, 0, 0, 0, 1, 1],
     [0, 0, 0, 0, 0, 1]
 ]
-assert isDiagonalTopLeftToBottomRightWin(grille, 4, 3, 1)==False
+assert detecterVictoireHautGaucheBasDroite(grille, 4, 3, 1)==False
 
 
 # test isVertacalWin Cyprien & Jules
@@ -153,7 +153,7 @@ grille = [
     [0, 0, 0, 0, 0, 0],
     [0, 0, 1, 1, 1, 1]
 ]
-assert isVerticalWin(grille, 6, 2, 1)==True
+assert detecterVictoireVerticale(grille, 6, 2, 1)==True
 grille = [
     [0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0],
@@ -163,7 +163,7 @@ grille = [
     [0, 0, 0, 0, 0, 0],
     [0, 1, 1, 1, 1, 2]
 ]
-assert isVerticalWin(grille, 6, 1, 1)==True
+assert detecterVictoireVerticale(grille, 6, 1, 1)==True
 grille = [
     [0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0],
@@ -173,7 +173,7 @@ grille = [
     [0, 0, 0, 0, 0, 0],
     [0, 1, 1, 1, 1, 1]
 ]
-assert isVerticalWin(grille, 6, 1, 1)==True
+assert detecterVictoireVerticale(grille, 6, 1, 1)==True
 grille = [
     [0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0],
@@ -183,7 +183,7 @@ grille = [
     [0, 0, 0, 0, 0, 0],
     [1, 1, 2, 1, 1, 1]
 ]
-assert isVerticalWin(grille, 6, 0, 1)==False
+assert detecterVictoireVerticale(grille, 6, 0, 1)==False
 grille = [
     [0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0],
@@ -193,7 +193,7 @@ grille = [
     [0, 0, 0, 0, 0, 0],
     [0, 0, 1, 2, 2, 2]
 ]
-assert isVerticalWin(grille, 6, 2, 1)==False
+assert detecterVictoireVerticale(grille, 6, 2, 1)==False
 grille = [
     [0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0],
@@ -203,9 +203,9 @@ grille = [
     [0, 0, 0, 0, 0, 0],
     [0, 0, 0, 1, 1, 1]
 ]
-assert isVerticalWin(grille, 6, 3, 1)==False
+assert detecterVictoireVerticale(grille, 6, 3, 1)==False
 
-# tests isHorizontalWin() Jules
+# tests detecterVictoireHorizontale() Jules
 
 grille = [
     [0, 0, 0, 0, 0, 0],
@@ -216,7 +216,7 @@ grille = [
     [0, 0, 0, 0, 0, 1],
     [0, 0, 0, 0, 0, 1]
 ]
-assert isHorizontalWin(grille, 5, 1)==True
+assert detecterVictoireHorizontale(grille, 5, 1)==True
 
 grille = [
     [0, 0, 0, 0, 0, 1],
@@ -227,7 +227,7 @@ grille = [
     [0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0]
 ]
-assert isHorizontalWin(grille, 5, 1)==True
+assert detecterVictoireHorizontale(grille, 5, 1)==True
 
 grille = [
     [0, 0, 0, 0, 0, 1],
@@ -238,7 +238,7 @@ grille = [
     [0, 0, 0, 0, 0, 1],
     [0, 0, 0, 0, 0, 1]
 ]
-assert isHorizontalWin(grille, 5, 1)==False
+assert detecterVictoireHorizontale(grille, 5, 1)==False
 
 grille = [
     [0, 0, 0, 0, 0, 1],
@@ -249,7 +249,7 @@ grille = [
     [0, 0, 0, 0, 0, 1],
     [0, 0, 0, 0, 0, 1]
 ]
-assert isHorizontalWin(grille, 5, 1)==False
+assert detecterVictoireHorizontale(grille, 5, 1)==False
 
 grille = [
     [0, 0, 0, 0, 0, 0],
@@ -260,7 +260,7 @@ grille = [
     [0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0]
 ]
-assert isHorizontalWin(grille, 5, 1)==False
+assert detecterVictoireHorizontale(grille, 5, 1)==False
 
 # test ajouterJeton()
 
