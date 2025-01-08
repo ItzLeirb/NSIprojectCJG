@@ -12,9 +12,9 @@ def affichageConsole(grille: list[list[int]], joueur: int, noms_joueurs: dict):
         joueur (type: int) l'index du joueur,
         noms_joueurs (type: dict) le dictionnaire des noms des joueurs 
     """
-    print("  | 0 | 1 | 2 | 3 | 4 | 5 | 6 | ")
+    print("| 0 | 1 | 2 | 3 | 4 | 5 | 6 | ")
     for ligne in range(len(grille[0])):
-        ligne_texte = f"{ligne} | "
+        ligne_texte = "| "
         for colonne in range(len(grille)):
             ligne_texte += f"{JOUEURS_IMAGE[grille[colonne][ligne]]} | "
         print(ligne_texte)
@@ -108,9 +108,10 @@ def jeu():
         # Vérifie si la partie est finie (victoire ou match nul)
         nombre_coups += 1
         if detecterVictoireVerticale(grille, index_colonne, index_ligne, joueur) == True or detecterVictoireHorizontale(grille, index_ligne, joueur) == True or detecterVictoireBasGaucheHautDroite(grille, index_colonne, index_ligne, joueur) == True or detecterVictoireHautGaucheBasDroite(grille, index_colonne, index_ligne, joueur) == True: 
-            running == False
+            running = False
+            affichageConsole(grille, joueur, noms_joueurs)
         elif nombre_coups >= 42:
-            running == False
+            running = False
 
 
 if __name__ == '__main__':
