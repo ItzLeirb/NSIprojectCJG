@@ -1,10 +1,23 @@
 import pygame as pg
+from os import path
+
+from game import *
+from settings import *
 
 # pygame setup
 pg.init()
 screen = pg.display.set_mode((1280, 720))
 clock = pg.time.Clock()
 running = True
+
+# constantes pour pygame
+MAIN_DIR = path.dirname('__main__')
+IMG_DIR = path.join(MAIN_DIR, 'img')
+
+# chargement des images
+jeton_jaune = pg.image.load(path.join(IMG_DIR, 'jaune.png')) 
+jeton_rouge = pg.image.load(path.join(IMG_DIR, 'rouge.png')) 
+grille_image = pg.image.load(path.join(IMG_DIR, 'grille.png'))
 
 while running:
     # poll for events

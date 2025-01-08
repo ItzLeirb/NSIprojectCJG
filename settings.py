@@ -1,4 +1,4 @@
-# every constants
+# toutes les constantes
 
 JOUEURS_IMAGE = {
     0: " ",
