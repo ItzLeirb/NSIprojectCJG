@@ -306,11 +306,11 @@ assert grille == [[1]*6]*7
 
 # print(trouverColonne("Joueur!!!!!!!!!"))
 
-# Resultat du test 1 : Entree : 0 ; Resultat attendu : 0 ; Sortie : 0 --> test reussi
-# Resultat du test 2 : Entree : 3 ; Resultat attendu : 3 ; Sortie : 3 --> test reussi
-# Resultat du test 3 : Entree : 6 ; Resultat attendu : 6 ; Sortie : 6 --> test reussi
-# Resultat du test 4 : Entree : -1 ; Resultat attendu : demande au joueur de rentrer une colonne valide ; Sortie : demande au joueur de rentrer une colonne valide --> test reussi
-# Resultat du test 5 : Entree : 7 ; Resultat attendu : demande au joueur de rentrer une colonne valide ; Sortie : demande au joueur de rentrer une colonne valide --> test reussi
+# Resultat du test 1 : Entree : 1 ; Resultat attendu : 0 ; Sortie : 0 --> test reussi
+# Resultat du test 2 : Entree : 4 ; Resultat attendu : 3 ; Sortie : 3 --> test reussi
+# Resultat du test 3 : Entree : 7 ; Resultat attendu : 6 ; Sortie : 6 --> test reussi
+# Resultat du test 4 : Entree : 0 ; Resultat attendu : demande au joueur de rentrer une colonne valide ; Sortie : demande au joueur de rentrer une colonne valide --> test reussi
+# Resultat du test 5 : Entree : 8 ; Resultat attendu : demande au joueur de rentrer une colonne valide ; Sortie : demande au joueur de rentrer une colonne valide --> test reussi
 
 
 

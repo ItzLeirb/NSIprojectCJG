@@ -12,7 +12,7 @@ def affichageConsole(grille: list[list[int]], joueur: int, noms_joueurs: dict):
         joueur (type: int) l'index du joueur,
         noms_joueurs (type: dict) le dictionnaire des noms des joueurs 
     """
-    print("| 0 | 1 | 2 | 3 | 4 | 5 | 6 | ")
+    print("| 1 | 2 | 3 | 4 | 5 | 6 | 7 |")
     for ligne in range(len(grille[0])):
         ligne_texte = "| "
         for colonne in range(len(grille)):
@@ -68,14 +68,14 @@ def trouverColonne(nom_joueur: str) -> int:
     """
 
     # Demande la colonne où le joueur veut jouer
-    print(f"Choisis la colonne où tu veux jouer {nom_joueur} (compris entre 0 et 6):")
-    colonne = int(input(""))
+    print(f"Choisis la colonne où tu veux jouer {nom_joueur} (compris entre 1 et 7):")
+    colonne = int(input("")) - 1
 
     # Vérifie si la colonne choisie est valide, la redemande si elle ne l'est pas.
     valides = [i for i in range(7)]
     while colonne not in valides:
-        print(f"La colonne choisie n'est pas valide. Choisis la colonne où tu veux jouer {nom_joueur} (compris entre 0 et 6):")
-        colonne = int(input(""))
+        print(f"La colonne choisie n'est pas valide. Choisis la colonne où tu veux jouer {nom_joueur} (compris entre 1 et 7):")
+        colonne = int(input("")) - 1
     
     return colonne
 
