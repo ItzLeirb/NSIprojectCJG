@@ -16,17 +16,18 @@ from settings import *
 def ajouterJeton(grille: list[list[int]], index_colonne: int,
                  joueur: int) -> tuple[list[list[int]], int]:
     """
-    Renvoie une grille où le jeton du joueur a été joué à une certaine colonne, puis fait "tomber" le jeton.
+    Renvoie une grille ou le jeton du joueur a ete joue a une certaine colonne, puis fait "tomber" le jeton.
     ajoute un jeton 1 ou 2 selon le joueur
     
-    Entrées:   
-        grille: la grille, un tableau (type: list) de listes (type: list) de nombres (type: int) qui représentent les joueurs, 
-        colonne: la colonne où le joueur a joué (type: int)
+    Entrees:   
+        grille: la grille, un tableau (type: list) de listes (type: list) de nombres (type: int) qui representent les joueurs, 
+        colonne: la colonne ou le joueur a joue (type: int)
         joueur: le numero du joueur (type: int)
             
-    Sortie: grille modifiee (jeton ajouté dans le tableau) (type: list de list de int)
+    Sortie:
+        grille modifiee (jeton ajoute dans le tableau) (type: list de list de int)
     """
-    # Itère à travers toute la colonne
+    # Itere a travers toute la colonne
     for index_ligne, jeton in enumerate(grille[index_colonne] + [5]): # Le 5 est arbitraire, mais n'est ni 0, ni 1, ni 2 et marque la fin de la colonne
         if jeton != 0:  # la case de la grille n'est vide
             grille[index_colonne][index_ligne-1] = joueur
@@ -37,37 +38,37 @@ def ajouterJeton(grille: list[list[int]], index_colonne: int,
 # Gabriel test ok
 def detecterVictoireVerticale(grille: list[list[int]], index_colonne: int, index_ligne: int, joueur: int) -> bool:
     """
-    Vérifie si un enchainement de 4 jetons a été créé verticalement
+    Verifie si un enchainement de 4 jetons a ete cree verticalement
     
-    Entrée: 
-        grille (type: list de list de int) le tableau à deux dimensions qui représente la grille, 
-        index_colonne: (type: int) l'index de la colonne où le dernier jeton a été placé, 
-        index_ligne: (type: int) l'index de la ligne où le dernier jeton a été placé,
-        joueur: (type: int) le numéro du joueur (compris entre 1 et 2)
+    Entree: 
+        grille (type: list de list de int) le tableau a deux dimensions qui represente la grille, 
+        index_colonne: (type: int) l'index de la colonne ou le dernier jeton a ete place, 
+        index_ligne: (type: int) l'index de la ligne ou le dernier jeton a ete place,
+        joueur: (type: int) le numero du joueur (compris entre 1 et 2)
              
     Sortie: 
-        True si 4 jetons sont alignés, False sinon
+        True si 4 jetons sont alignes, False sinon
     """
     nombre_daffilee = 0
-    # Itère à travers la colonne index_colonne à partir de la ligne index_ligne.
+    # Itere a travers la colonne index_colonne a partir de la ligne index_ligne.
     for jeton in grille[index_colonne][index_ligne:]:
-        if jeton == 0: continue # ignore les cases vides (qui ne sont pas censées exister)
+        if jeton == 0: continue # ignore les cases vides (qui ne sont pas censees exister)
         
-        # Compte le nombre de jetons identiques d'affilée et renvoie True si il y en a 4 ou plus
+        # Compte le nombre de jetons identiques d'affilee et renvoie True si il y en a 4 ou plus
         if jeton == joueur:
             nombre_daffilee += 1
             if nombre_daffilee >= 4:
                 return True
         else:
-            return False # Arrête de compter si un jeton de l'autre joueur s'intercale avant d'avoir 4 jetons alignés.
+            return False # Arrête de compter si un jeton de l'autre joueur s'intercale avant d'avoir 4 jetons alignes.
     return False
 
 # Cyprien test ok
 def detecterVictoireHorizontale(grille: list[list[int]], index_ligne: int, joueur: int) -> bool:
     """
-    Vérifie si un enchainement de 4 jetons n'as pas ete cree horizontalement
+    Verifie si un enchainement de 4 jetons n'as pas ete cree horizontalement
     
-    Entrée: 
+    Entree: 
         grille type: list, 
         index_ligne type: int,
         joueur type: int
@@ -76,15 +77,15 @@ def detecterVictoireHorizontale(grille: list[list[int]], index_ligne: int, joueu
     """
     nombre_daffilee = 0
     
-    # Itère à travers la ligne jouée
+    # Itere a travers la ligne jouee
     for index_jeton in range(len(grille)):
-        # Compte le nombre de jetons identiques d'affilée et renvoie True si il y en a 4 ou plus
+        # Compte le nombre de jetons identiques d'affilee et renvoie True si il y en a 4 ou plus
         if grille[index_jeton][index_ligne] == joueur:
             nombre_daffilee += 1
             if nombre_daffilee >= 4:
                 return True
         else:
-            nombre_daffilee = 0 # Repars à 0 si un jeton manque
+            nombre_daffilee = 0 # Repars a 0 si un jeton manque
             
     return False
 
@@ -93,7 +94,7 @@ def trouverDistances(grille: list[list[int]], index_colonne: int, index_ligne: i
     """
     Trouve les distances entre la case [index_colonne][index_ligne] et les 4 bords de la grille
     
-    Entrée: 
+    Entree: 
         grille type: list, 
         index_colone type: int, 
         index_ligne type: int,
@@ -102,7 +103,7 @@ def trouverDistances(grille: list[list[int]], index_colonne: int, index_ligne: i
         type: int les distances entre les bords respectifs entre 0 et 4 (compris)
     """
     
-    # Calcule séparément les distances
+    # Calcule separement les distances
     distance_haut = min(index_ligne, 4)
     distance_bas = min(len(grille[index_colonne])-1 - index_ligne, 4)
     distance_gauche = min(index_colonne, 4)
@@ -113,10 +114,10 @@ def trouverDistances(grille: list[list[int]], index_colonne: int, index_ligne: i
 # Julle test ok
 def detecterVictoireBasGaucheHautDroite(grille: list[list[int]], index_colonne: int, index_ligne: int, joueur: int) -> bool:
     """
-    Vérifie si un enchainement de 4 jetons n'as pas ete cree dans une diagonale allant de en bas 
-    a gauche à en haut a droite 
+    Verifie si un enchainement de 4 jetons n'as pas ete cree dans une diagonale allant de en bas 
+    a gauche a en haut a droite 
     
-    Entrée: 
+    Entree: 
         grille type: list, 
         index_colone type: int, 
         index_ligne type: int,
@@ -125,7 +126,7 @@ def detecterVictoireBasGaucheHautDroite(grille: list[list[int]], index_colonne: 
         True si 4 jetons sont alignes, False dans l'autre cas
     """
     
-    # Évalue les distances avec trouverDistances()
+    # evalue les distances avec trouverDistances()
     distance_haut, distance_bas, distance_gauche, distance_droite = trouverDistances(grille, index_colonne, index_ligne)
     
     # Calcule la distance diagonale avec les bords de la grille
@@ -134,25 +135,25 @@ def detecterVictoireBasGaucheHautDroite(grille: list[list[int]], index_colonne: 
     
     nombre_daffilee = 0        
     
-    # Itère à travers la diagonale  de bord à bord 
+    # Itere a travers la diagonale  de bord a bord 
     for i in range(-ecart_bas_gauche, ecart_haut_droite+1):
-        # Compte le nombre de jetons identiques d'affilée et renvoie True si il y en a 4 ou plus
+        # Compte le nombre de jetons identiques d'affilee et renvoie True si il y en a 4 ou plus
         if grille[index_colonne + i][index_ligne - i] == joueur:
             nombre_daffilee += 1
             if nombre_daffilee >= 4:
                 return True
         else:
-            nombre_daffilee = 0 # Repars à 0 si un jeton autre s'est intercalé
+            nombre_daffilee = 0 # Repars a 0 si un jeton autre s'est intercale
     return False
    
 
 # Cyprien test ok
 def detecterVictoireHautGaucheBasDroite(grille: list[list[int]], index_colonne: int, index_ligne: int, joueur: int) -> bool:
     """
-    Vérifie si un enchainement de 4 jetons n'as pas ete cree dans une diagonale allant de en haut 
+    Verifie si un enchainement de 4 jetons n'as pas ete cree dans une diagonale allant de en haut 
     a gauche a en bas a droite 
     
-    Entrée: 
+    Entree: 
         grille type: list, 
         index_colone type: int, 
         index_ligne type: int,
@@ -161,7 +162,7 @@ def detecterVictoireHautGaucheBasDroite(grille: list[list[int]], index_colonne: 
         True si 4 jetons sont alignes, False dans l'autre cas
     """
     
-    # Évalue les distances avec trouverDistances()
+    # evalue les distances avec trouverDistances()
     distance_haut, distance_bas, distance_gauche, distance_droite = trouverDistances(grille, index_colonne, index_ligne)
     
     # Calcule la distance diagonale avec les bords de la grille
@@ -170,15 +171,15 @@ def detecterVictoireHautGaucheBasDroite(grille: list[list[int]], index_colonne: 
     
     nombre_daffilee = 0
     
-    # Itère à travers la diagonale  de bord à bord
+    # Itere a travers la diagonale  de bord a bord
     for i in range(-ecart_haut_gauche, ecart_bas_droite+1):
-        # Compte le nombre de jetons identiques d'affilée et renvoie True si il y en a 4 ou plus
+        # Compte le nombre de jetons identiques d'affilee et renvoie True si il y en a 4 ou plus
         if grille[index_colonne + i][index_ligne + i] == joueur:
             nombre_daffilee += 1
             if nombre_daffilee >= 4:
                 return True
         else:
-            nombre_daffilee = 0 # Repars à 0 si un jeton autre s'est intercalé
+            nombre_daffilee = 0 # Repars a 0 si un jeton autre s'est intercale
     return False
 
 
