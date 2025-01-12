@@ -23,6 +23,8 @@ grille = [
     [0, 0, 0, 0, 0, 0]
 ]
 affichageConsole(grille, 1, {1: 'a', 2: 'b'})
+affichageConsole(grille, 2, {1: 'a', 2: 'b'}, etat_de_la_partie="victoire")
+affichageConsole(grille, 1, {1: 'a', 2: 'b'}, etat_de_la_partie="match nul")
 
 
 # test detecterVictoireBasGaucheHautDroite Gabriel
