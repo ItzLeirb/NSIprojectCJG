@@ -25,28 +25,29 @@ fenetre = pg.display.set_mode(TAILLE_FENETRE)
 clock = pg.time.Clock()
 running = True
 
-def positionnerJeton():
-    pass
+def positionnerJeton(index_joueur: int, coordonees_grille: tuple[int, int]):
+    if index_joueur == 1:
+        return (jeton_jaune, ((ORIGINE_GRILLE[0] + 17 * coordonees_grille[0]) * TAILLE_COEFFICIENT, (ORIGINE_GRILLE[1] + 17 * coordonees_grille[1]) * TAILLE_COEFFICIENT))
+    if index_joueur == 2:
+        return (jeton_rouge, ((ORIGINE_GRILLE[0] + 17 * coordonees_grille[0]) * TAILLE_COEFFICIENT, (ORIGINE_GRILLE[1] + 17 * coordonees_grille[1]) * TAILLE_COEFFICIENT))
+            
 
-while running:
-    # poll for events
-    # pygame.QUIT event means the user clicked X to close your window
-    for event in pg.event.get():
-        if event.type == pg.QUIT:
-            running = False
-
-    # RENDER YOUR GAME HERE
-    grille_image.blits([
-        (jeton_jaune, ((ORIGINE_GRILLE[0] + 17 * 0) * TAILLE_COEFFICIENT, (ORIGINE_GRILLE[1] + 17 * 5) * TAILLE_COEFFICIENT)),
-        (jeton_rouge, ((ORIGINE_GRILLE[0] + 17 * 2) * TAILLE_COEFFICIENT, (ORIGINE_GRILLE[1] + 17 * 5) * TAILLE_COEFFICIENT)),
-        (jeton_jaune, ((ORIGINE_GRILLE[0] + 17 * 5) * TAILLE_COEFFICIENT, (ORIGINE_GRILLE[1] + 17 * 5) * TAILLE_COEFFICIENT))
-    ])
-
-    fenetre.blit(grille_image, (0,0))
+if __name__ == '__main__':
+    while running:
+        # poll for events
+        # pygame.QUIT event means the user clicked X to close your window
+        for event in pg.event.get():
+            if event.type == pg.QUIT:
+                running = False
     
-    # flip() the display to put your work on fenetre
-    pg.display.flip()
-
-    clock.tick(60)  # limits FPS to 60
-
-pg.quit()
+        # RENDER YOUR GAME HERE
+        grille_image.blits()
+    
+        fenetre.blit(grille_image, (0,0))
+        
+        # flip() the display to put your work on fenetre
+        pg.display.flip()
+    
+        clock.tick(60)  # limits FPS to 60
+    
+    pg.quit()
