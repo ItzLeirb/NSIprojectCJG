@@ -59,21 +59,21 @@ if __name__ == '__main__':
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 running = False
-            if event.type == pg.KEYDOWN:
-                if event.type == pg.K_1:
+            if event.type == pg.KEYUP:
+                if event.key == pg.K_1:
+                    index_colonne = 0
+                elif event.key == pg.K_2:
                     index_colonne = 1
-                elif event.type == pg.K_2:
+                elif event.key == pg.K_3:
                     index_colonne = 2
-                elif event.type == pg.K_3:
+                elif event.key == pg.K_4:
                     index_colonne = 3
-                elif event.type == pg.K_4:
+                elif event.key == pg.K_5:
                     index_colonne = 4
-                elif event.type == pg.K_5:
+                elif event.key == pg.K_6:
                     index_colonne = 5
-                elif event.type == pg.K_6:
+                elif event.key == pg.K_7:
                     index_colonne = 6
-                elif event.type == pg.K_7:
-                    index_colonne = 7
             if event.type == pg.MOUSEBUTTONUP:
                 position_souris = pg.mouse.get_pos()
                 # Check si la position de la souris est valable (sur une colonne)
