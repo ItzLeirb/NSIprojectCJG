@@ -74,7 +74,21 @@ if __name__ == '__main__':
                 position_souris = pg.mouse.get_pos()
                 # Check si la position de la souris est valable (sur une colonne)
                 if position_souris[0] > ORIGINE_GRILLE[1] * TAILLE_COEFFICIENT and ORIGINE_GRILLE[0] * TAILLE_COEFFICIENT >= position_souris >= (ORIGINE_GRILLE[0] + 17 * 7) * TAILLE_COEFFICIENT:
-                    
+                    position_souris_x = position_souris[0] - ORIGINE_GRILLE[0] * TAILLE_COEFFICIENT
+                    if 17 * 0 >= position_souris_x > 17 * 1:
+                        index_colonne = 1
+                    elif 17 * 1 >= position_souris_x > 17 * 2:
+                        index_colonne = 2
+                    elif 17 * 2 >= position_souris_x > 17 * 3:
+                        index_colonne = 3
+                    elif 17 * 3 >= position_souris_x > 17 * 4:
+                        index_colonne = 4
+                    elif 17 * 4 >= position_souris_x > 17 * 5:
+                        index_colonne = 5
+                    elif 17 * 5 >= position_souris_x > 17 * 6:
+                        index_colonne = 6
+                    elif 17 * 6 >= position_souris_x > 17 * 7:
+                        index_colonne = 7
     
         # logique du jeu
         
