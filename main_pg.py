@@ -12,6 +12,8 @@ TAILLE_COEFFICIENT = 6
 TAILLE = 128 * TAILLE_COEFFICIENT
 TAILLE_FENETRE = (TAILLE, TAILLE)
 
+TAILLE_JETON = 17
+
 ORIGINE_GRILLE = (5, 26)
 
 # chargement des images
@@ -33,9 +35,9 @@ def positionnerJeton(index_joueur: int, coordonees_grille: tuple[int, int]):
     """
     
     if index_joueur == 1:
-        return (jeton_jaune, ((ORIGINE_GRILLE[0] + 17 * coordonees_grille[0]) * TAILLE_COEFFICIENT, (ORIGINE_GRILLE[1] + 17 * coordonees_grille[1]) * TAILLE_COEFFICIENT))
+        return (jeton_jaune, ((ORIGINE_GRILLE[0] + TAILLE_JETON * coordonees_grille[0]) * TAILLE_COEFFICIENT, (ORIGINE_GRILLE[1] + TAILLE_JETON * coordonees_grille[1]) * TAILLE_COEFFICIENT))
     if index_joueur == 2:
-        return (jeton_rouge, ((ORIGINE_GRILLE[0] + 17 * coordonees_grille[0]) * TAILLE_COEFFICIENT, (ORIGINE_GRILLE[1] + 17 * coordonees_grille[1]) * TAILLE_COEFFICIENT))
+        return (jeton_rouge, ((ORIGINE_GRILLE[0] + TAILLE_JETON * coordonees_grille[0]) * TAILLE_COEFFICIENT, (ORIGINE_GRILLE[1] + TAILLE_JETON * coordonees_grille[1]) * TAILLE_COEFFICIENT))
     return None
 
 if __name__ == '__main__':
@@ -49,9 +51,11 @@ if __name__ == '__main__':
     grille = [[0 for i in range(6)] for i in range(7)]
     joueur = 0
     nombre_coups = 0
+    tous_jetons = []
     
-    while running:
+    while running:            
         # poll for events
+        index_colonne = 0
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 running = False
@@ -73,20 +77,27 @@ if __name__ == '__main__':
             if event.type == pg.MOUSEBUTTONUP:
                 position_souris = pg.mouse.get_pos()
                 # Check si la position de la souris est valable (sur une colonne)
-                if position_souris[0] > ORIGINE_GRILLE[1] * TAILLE_COEFFICIENT and ORIGINE_GRILLE[0] * TAILLE_COEFFICIENT >= position_souris >= (ORIGINE_GRILLE[0] + 17 * 7) * TAILLE_COEFFICIENT:
+                if position_souris[1] > ORIGINE_GRILLE[1] * TAILLE_COEFFICIENT and ORIGINE_GRILLE[0] * TAILLE_COEFFICIENT <= position_souris[0] <= (ORIGINE_GRILLE[0] + TAILLE_JETON * 7) * TAILLE_COEFFICIENT:
                     position_souris_x = position_souris[0] - ORIGINE_GRILLE[0] * TAILLE_COEFFICIENT
-                    index_colonne = position_souris_x // 17
-    
-        # logique du jeu
-        
-        # Change le joueur
-        joueur += 1
-        if joueur > 2:
-            joueur = 1
-        
+                    index_colonne = position_souris_x // (TAILLE_JETON * TAILLE_COEFFICIENT)
+        if index_colonne != 0:
+            # Change le joueur
+            joueur += 1
+            if joueur > 2:
+                joueur = 1
+                
+            grille, index_ligne = ajouterJeton(grille, index_colonne, joueur)
+            tous_jetons.append(positionnerJeton(joueur, (index_colonne, index_ligne)))
+            # Vérifier si le joueur actuel a gagné
+            if (detecterVictoireVerticale(grille, index_colonne, index_ligne, joueur) or
+                detecterVictoireHorizontale(grille, index_ligne, joueur) or
+                detecterVictoireBasGaucheHautDroite(grille, index_colonne, index_ligne, joueur) or
+                detecterVictoireHautGaucheBasDroite(grille, index_colonne, index_ligne, joueur)):
+                print(f"Joueur {[0,"jaune", "rouge"][joueur]} a gagné !")
+                running = False
     
         # affichage
-        grille_image.blits()
+        grille_image.blits(tous_jetons)
     
         fenetre.blit(grille_image, (0,0))
         
