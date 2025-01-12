@@ -5,12 +5,13 @@ from settings import *
 # Gabriel ( Cyprien pour la victoire ) tests ok
 def affichageConsole(grille: list[list[int]], joueur: int, noms_joueurs: dict, etat_de_la_partie: str = 'en cours'):
     """
-    Affiche l'etat actuel de la grille dans la console 
+    Affiche l'etat actuel de la grille dans la console et affiche le vainqueur ou une egalitée en fin de partie
     
     Entrée : 
         grille (type: list de list d'int) la grille, 
         joueur (type: int) l'index du joueur,
-        noms_joueurs (type: dict) le dictionnaire des noms des joueurs 
+        noms_joueurs (type: dict) le dictionnaire des noms des joueurs,
+        etat_de_la_partie (type: str) l'état de la partie
     """
     print("| 1 | 2 | 3 | 4 | 5 | 6 | 7 |")
     for ligne in range(len(grille[0])):
@@ -100,7 +101,7 @@ def trouverColonne(nom_joueur: str, grille: list[list[int]]) -> int:
 def jeu():
     """
     Fait tourner la partie entière.
-    Coordonne les différentes fonctions pour faire fonctioner le jeu.
+    Coordonne les différentes fonctions pour faire fonctionner le jeu.
     """
     # Création de la grille, mise en place des variables importantes
     grille = [[0 for i in range(6)] for i in range(7)]
