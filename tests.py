@@ -313,9 +313,10 @@ assert grille == [[1]*6]*7
 # Resultat du test 4 : Entree : 0 ; Resultat attendu : demande au joueur de rentrer une colonne valide ; Sortie : demande au joueur de rentrer une colonne valide --> test reussi
 # Resultat du test 5 : Entree : 8 ; Resultat attendu : demande au joueur de rentrer une colonne valide ; Sortie : demande au joueur de rentrer une colonne valide --> test reussi
 
+# tests positionnerJeton() Gabriel
 
-
-
+assert positionnerJeton(1, (6, 5)) == (jeton_jaune, ((ORIGINE_GRILLE[0] + 17 * 6) * TAILLE_COEFFICIENT, (ORIGINE_GRILLE[1] + 17 * 5) * TAILLE_COEFFICIENT))
+assert positionnerJeton(2, (0, 0)) == (jeton_rouge, ((ORIGINE_GRILLE[0] + 17 * 0) * TAILLE_COEFFICIENT, (ORIGINE_GRILLE[1] + 17 * 0) * TAILLE_COEFFICIENT))
 
 
 print('Tous les tests sont passés')

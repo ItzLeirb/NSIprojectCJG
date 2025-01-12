@@ -19,12 +19,24 @@ jeton_jaune = pg.transform.scale(pg.image.load(path.join(IMG_DIR, 'jaune.png')),
 jeton_rouge = pg.transform.scale(pg.image.load(path.join(IMG_DIR, 'rouge.png')), (TAILLE / 8, TAILLE / 8)) # taille du jeton par rapport à la grille
 grille_image = pg.transform.scale(pg.image.load(path.join(IMG_DIR, 'grille.png')), TAILLE_FENETRE)
 
+# Gabriel test ok
 def positionnerJeton(index_joueur: int, coordonees_grille: tuple[int, int]):
+    """
+    Renvoie l'image placee d'un jeton pouvant etre interpretee par pygame.
+    
+    Entree:
+        index_joueur (type: int): l'index du joueur (1 ou 2) pour choisir la couleur du jeton
+        coordonees_grille (type: tuple[int, int]): les coordonees du jeton joue sur la grille
+
+    Sortie:
+        un (type: tuple[pg.image, tuple[int, int]]) contenant l'image du jeton joue, ainsi que ses coordonnees sur la fenetre ou None si le joueur n'existe pas
+    """
+    
     if index_joueur == 1:
         return (jeton_jaune, ((ORIGINE_GRILLE[0] + 17 * coordonees_grille[0]) * TAILLE_COEFFICIENT, (ORIGINE_GRILLE[1] + 17 * coordonees_grille[1]) * TAILLE_COEFFICIENT))
     if index_joueur == 2:
         return (jeton_rouge, ((ORIGINE_GRILLE[0] + 17 * coordonees_grille[0]) * TAILLE_COEFFICIENT, (ORIGINE_GRILLE[1] + 17 * coordonees_grille[1]) * TAILLE_COEFFICIENT))
-            
+    return None
 
 if __name__ == '__main__':
     
