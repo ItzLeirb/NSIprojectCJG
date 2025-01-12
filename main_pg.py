@@ -46,14 +46,45 @@ if __name__ == '__main__':
     clock = pg.time.Clock()
     running = True
     
+    grille = [[0 for i in range(6)] for i in range(7)]
+    joueur = 0
+    nombre_coups = 0
+    
     while running:
         # poll for events
-        # pygame.QUIT event means the user clicked X to close your window
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 running = False
+            if event.type == pg.KEYDOWN:
+                if event.type == pg.K_1:
+                    index_colonne = 1
+                elif event.type == pg.K_2:
+                    index_colonne = 2
+                elif event.type == pg.K_3:
+                    index_colonne = 3
+                elif event.type == pg.K_4:
+                    index_colonne = 4
+                elif event.type == pg.K_5:
+                    index_colonne = 5
+                elif event.type == pg.K_6:
+                    index_colonne = 6
+                elif event.type == pg.K_7:
+                    index_colonne = 7
+            if event.type == pg.MOUSEBUTTONUP:
+                position_souris = pg.mouse.get_pos()
+                # Check si la position de la souris est valable (sur une colonne)
+                if position_souris[0] > ORIGINE_GRILLE[1] * TAILLE_COEFFICIENT and ORIGINE_GRILLE[0] * TAILLE_COEFFICIENT >= position_souris >= (ORIGINE_GRILLE[0] + 17 * 7) * TAILLE_COEFFICIENT:
+                    
     
-        # RENDER YOUR GAME HERE
+        # logique du jeu
+        
+        # Change le joueur
+        joueur += 1
+        if joueur > 2:
+            joueur = 1
+        
+    
+        # affichage
         grille_image.blits()
     
         fenetre.blit(grille_image, (0,0))
