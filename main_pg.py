@@ -8,22 +8,25 @@ from settings import *
 MAIN_DIR = path.dirname('__main__')
 IMG_DIR = path.join(MAIN_DIR, 'img')
 
-SIZE_MULITIPLIER = 6
-WIDTH = 128 * SIZE_MULITIPLIER
-HEIGHT = 128 * SIZE_MULITIPLIER
-SCREEN_SIZE = (WIDTH, HEIGHT)
+TAILLE_COEFFICIENT = 6
+TAILLE = 128 * TAILLE_COEFFICIENT
+TAILLE_FENETRE = (TAILLE, TAILLE)
+
+ORIGINE_GRILLE = (5, 26)
 
 # chargement des images
-jeton_jaune = pg.image.load(path.join(IMG_DIR, 'jaune.png')) 
-jeton_rouge = pg.image.load(path.join(IMG_DIR, 'rouge.png')) 
-grille_image = pg.transform.scale(pg.image.load(path.join(IMG_DIR, 'grille.png')), SCREEN_SIZE)
-
+jeton_jaune = pg.transform.scale(pg.image.load(path.join(IMG_DIR, 'jaune.png')), (TAILLE / 8, TAILLE / 8)) # taille du jeton par rapport à la grille
+jeton_rouge = pg.transform.scale(pg.image.load(path.join(IMG_DIR, 'rouge.png')), (TAILLE / 8, TAILLE / 8)) # taille du jeton par rapport à la grille
+grille_image = pg.transform.scale(pg.image.load(path.join(IMG_DIR, 'grille.png')), TAILLE_FENETRE)
 
 # pygame setup
 pg.init()
-screen = pg.display.set_mode(SCREEN_SIZE)
+fenetre = pg.display.set_mode(TAILLE_FENETRE)
 clock = pg.time.Clock()
 running = True
+
+def positionnerJeton():
+    pass
 
 while running:
     # poll for events
@@ -32,12 +35,16 @@ while running:
         if event.type == pg.QUIT:
             running = False
 
-    # fill the screen with a color to wipe away anything from last frame
-    screen.blit(grille_image, (0,0))
-
     # RENDER YOUR GAME HERE
+    grille_image.blits([
+        (jeton_jaune, ((ORIGINE_GRILLE[0] + 17 * 0) * TAILLE_COEFFICIENT, (ORIGINE_GRILLE[1] + 17 * 5) * TAILLE_COEFFICIENT)),
+        (jeton_rouge, ((ORIGINE_GRILLE[0] + 17 * 2) * TAILLE_COEFFICIENT, (ORIGINE_GRILLE[1] + 17 * 5) * TAILLE_COEFFICIENT)),
+        (jeton_jaune, ((ORIGINE_GRILLE[0] + 17 * 5) * TAILLE_COEFFICIENT, (ORIGINE_GRILLE[1] + 17 * 5) * TAILLE_COEFFICIENT))
+    ])
 
-    # flip() the display to put your work on screen
+    fenetre.blit(grille_image, (0,0))
+    
+    # flip() the display to put your work on fenetre
     pg.display.flip()
 
     clock.tick(60)  # limits FPS to 60
