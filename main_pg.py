@@ -80,7 +80,7 @@ if __name__ == '__main__':
                 if position_souris[1] > ORIGINE_GRILLE[1] * TAILLE_COEFFICIENT and (ORIGINE_GRILLE[0]-1) * TAILLE_COEFFICIENT <= position_souris[0] <= (ORIGINE_GRILLE[0] + TAILLE_JETON * 7) * TAILLE_COEFFICIENT:
                     position_souris_x = position_souris[0] - (ORIGINE_GRILLE[0]-1) * TAILLE_COEFFICIENT
                     index_colonne = position_souris_x // (TAILLE_JETON * TAILLE_COEFFICIENT)
-        if index_colonne >= 0:
+        if index_colonne >= 0 and grille[index_colonne][0] == 0:
             # Change le joueur
             joueur += 1
             if joueur > 2:
