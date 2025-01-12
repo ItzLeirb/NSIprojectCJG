@@ -2,8 +2,8 @@
 from game import *
 from settings import *
 
-# Gabriel tests ok
-def affichageConsole(grille: list[list[int]], joueur: int, noms_joueurs: dict):
+# Gabriel ( Cyprien pour la victoire ) tests ok
+def affichageConsole(grille: list[list[int]], joueur: int, noms_joueurs: dict, etat_de_la_partie: str = 'en cours'):
     """
     Affiche l'etat actuel de la grille dans la console 
     
@@ -19,8 +19,15 @@ def affichageConsole(grille: list[list[int]], joueur: int, noms_joueurs: dict):
             ligne_texte += f"{JOUEURS_IMAGE[grille[colonne][ligne]]} | "
         print(ligne_texte)
     
-    print("")
-    print(f"Au tour du joueur {noms_joueurs[joueur]}")
+    if etat_de_la_partie == 'en cours':
+        print("")
+        print(f"Au tour du joueur {noms_joueurs[joueur]}")
+    elif etat_de_la_partie == 'victoire':
+        print("")
+        print(f"Victoire du joueur {noms_joueurs[joueur]} !")
+    elif etat_de_la_partie == 'match nul':
+        print("")
+        print("Egalité")
     
 
 # Gabriel
@@ -109,9 +116,10 @@ def jeu():
         nombre_coups += 1
         if detecterVictoireVerticale(grille, index_colonne, index_ligne, joueur) == True or detecterVictoireHorizontale(grille, index_ligne, joueur) == True or detecterVictoireBasGaucheHautDroite(grille, index_colonne, index_ligne, joueur) == True or detecterVictoireHautGaucheBasDroite(grille, index_colonne, index_ligne, joueur) == True: 
             running = False
-            affichageConsole(grille, joueur, noms_joueurs)
+            affichageConsole(grille, joueur, noms_joueurs, 'victoire')
         elif nombre_coups >= 42:
             running = False
+            affichageConsole(grille, joueur, noms_joueurs, 'match nul')
 
 
 if __name__ == '__main__':
