@@ -57,7 +57,7 @@ def setupJoueur() -> dict:
     return joueurs
 
 # Gabriel
-def trouverColonne(nom_joueur: str) -> int:
+def trouverColonne(nom_joueur: str, grille: tuple) -> int:
     """
     Demande au joueur actuel la colonne dans laquelle il veut jouer, et vérifie si elle est valide
 
@@ -73,7 +73,7 @@ def trouverColonne(nom_joueur: str) -> int:
 
     # Vérifie si la colonne choisie est valide, la redemande si elle ne l'est pas.
     valides = [i for i in range(7)]
-    while colonne not in valides:
+    while colonne not in valides or grille:
         print(f"La colonne choisie n'est pas valide. Choisis la colonne où tu veux jouer {nom_joueur} (compris entre 1 et 7):")
         colonne = int(input("")) - 1
     
