@@ -1,5 +1,6 @@
 from game import *
 from main import *
+from main_pg import *
 
 # test trouverDistances
 grille = [[0]*6]*7
