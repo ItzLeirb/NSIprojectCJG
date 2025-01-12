@@ -107,5 +107,5 @@ if __name__ == '__main__':
         clock.tick(60)  # limits FPS to 60
     
     pg.display.flip()
-    pg.time.delay(1500)
+    pg.time.delay(4000)
     pg.quit()
