@@ -11,7 +11,7 @@ def affichageConsole(grille: list[list[int]], joueur: int, noms_joueurs: dict, e
         grille (type: list de list d'int) la grille, 
         joueur (type: int) l'index du joueur,
         noms_joueurs (type: dict) le dictionnaire des noms des joueurs,
-        etat_de_la_partie (type: str) l'état de la partie
+        etat_de_la_partie (type: str): l'etat de la partie
     """
     print("| 1 | 2 | 3 | 4 | 5 | 6 | 7 |")
     for ligne in range(len(grille[0])):
