@@ -23,7 +23,7 @@ def ajouterJeton(grille: list[list[int]], index_colonne: int,
         grille: la grille, un tableau (type: list) de listes (type: list) de nombres (type: int) qui representent les joueurs, 
         colonne: la colonne ou le joueur a joue (type: int)
         joueur: le numero du joueur (type: int)
-            
+        
     Sortie:
         grille modifiee (jeton ajoute dans le tableau) (type: list de list de int)
     """
@@ -45,7 +45,7 @@ def detecterVictoireVerticale(grille: list[list[int]], index_colonne: int, index
         index_colonne: (type: int) l'index de la colonne ou le dernier jeton a ete place, 
         index_ligne: (type: int) l'index de la ligne ou le dernier jeton a ete place,
         joueur: (type: int) le numero du joueur (compris entre 1 et 2)
-             
+    
     Sortie: 
         True si 4 jetons sont alignes, False sinon
     """

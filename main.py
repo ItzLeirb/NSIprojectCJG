@@ -1,6 +1,7 @@
 # project
 from game import *
 from settings import *
+from ia import *
 
 # Gabriel ( Cyprien pour la victoire ) tests ok
 def affichageConsole(grille: list[list[int]], joueur: int, noms_joueurs: dict, etat_de_la_partie: str = 'en cours'):
@@ -56,12 +57,14 @@ def setupJoueur() -> dict:
     Sortie: 
         un dictionnaire (type: dict) qui associe à un nombre (type: int) entre 1 et 2 au nom du joueur correspondant
     """
-    
-    joueurs = {
-        1 : trouverNom(1),
-        2 : trouverNom(2)
-    }
 
+    joueurs = {}
+    for i in range(1, 3):
+        choix = input(f"Joueur {i}, voulez-vous être une IA ? (o/n) : ").lower()
+        if choix == 'o':
+            joueurs[i] = ia_choisir_colonne
+        else:
+            joueurs[i] = trouverNom(i)
     return joueurs
 
 # Gabriel
@@ -119,13 +122,18 @@ def jeu():
             
         affichageConsole(grille, joueur, noms_joueurs)
 
-        # Fait jouer le joueur
-        index_colonne = trouverColonne(noms_joueurs[joueur])
+        # Vérifie si le joueur est une IA ou un humain
+        if callable(noms_joueurs[joueur]):  # Si l'entrée est une fonction, c'est une IA
+            index_colonne = noms_joueurs[joueur](grille, joueur, 3 - joueur)  # Appelle la fonction d'IA
+        else:
+            index_colonne = trouverColonne(noms_joueurs[joueur])  # Humain choisit une colonne
+        
+        # Ajout du jeton dans la grille
         grille, index_ligne = ajouterJeton(grille, index_colonne, joueur)
 
         # Vérifie si la partie est finie (victoire ou match nul)
         nombre_coups += 1
-        if detecterVictoireVerticale(grille, index_colonne, index_ligne, joueur) == True or detecterVictoireHorizontale(grille, index_ligne, joueur) == True or detecterVictoireBasGaucheHautDroite(grille, index_colonne, index_ligne, joueur) == True or detecterVictoireHautGaucheBasDroite(grille, index_colonne, index_ligne, joueur) == True: 
+        if detecterVictoireVerticale(grille, index_colonne, index_ligne, joueur) == True or detecterVictoireHorizontale(grille, index_ligne, joueur) == True or detecterVictoireBasGaucheHautDroite(grille, index_colonne, index_ligne, joueur) == True or detecterVictoireHautGaucheBasDroite(grille, index_colonne, index_ligne, joueur) == True:
             running = False
             affichageConsole(grille, joueur, noms_joueurs, 'victoire')
         elif nombre_coups >= 42:
