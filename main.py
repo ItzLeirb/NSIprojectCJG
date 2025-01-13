@@ -126,7 +126,7 @@ def jeu():
         if callable(noms_joueurs[joueur]):  # Si l'entrée est une fonction, c'est une IA
             index_colonne = noms_joueurs[joueur](grille, joueur, 3 - joueur)  # Appelle la fonction d'IA
         else:
-            index_colonne = trouverColonne(noms_joueurs[joueur])  # Humain choisit une colonne
+            index_colonne = trouverColonne(noms_joueurs[joueur], grille)  # Humain choisit une colonne
         
         # Ajout du jeton dans la grille
         grille, index_ligne = ajouterJeton(grille, index_colonne, joueur)

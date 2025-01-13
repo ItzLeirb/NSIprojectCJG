@@ -1,5 +1,6 @@
 # main functions
 from settings import *
+from ia import *
 
 # la grille:
 """
@@ -179,7 +180,23 @@ def detecterVictoireHautGaucheBasDroite(grille: list[list[int]], index_colonne: 
             if nombre_daffilee >= 4:
                 return True
         else:
-            nombre_daffilee = 0 # Repars a 0 si un jeton autre s'est intercale
+            nombre_daffilee = 0 
     return False
 
+def trouverLigne(grille, colonne):
+    for ligne in range(5, -1, -1):
+        if grille[colonne][ligne] == 0:
+            return ligne
+    return None 
+
+def estFini(grille, joueur, autre_joueur):
+    for colonne in range(7):
+        for ligne in range(6):
+            if grille[colonne][ligne] != 0:
+                if detecterVictoireVerticale(grille, colonne, ligne, joueur) or \
+                   detecterVictoireHorizontale(grille, ligne, joueur) or \
+                   detecterVictoireBasGaucheHautDroite(grille, colonne, ligne, joueur) or \
+                   detecterVictoireHautGaucheBasDroite(grille, colonne, ligne, joueur):
+                    return True
+    return False
 
