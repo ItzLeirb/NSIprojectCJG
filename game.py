@@ -1,6 +1,5 @@
 # main functions
 from settings import *
-from ia import *
 
 # la grille:
 """
@@ -188,15 +187,4 @@ def trouverLigne(grille, colonne):
         if grille[colonne][ligne] == 0:
             return ligne
     return None 
-
-def estFini(grille, joueur, autre_joueur):
-    for colonne in range(7):
-        for ligne in range(6):
-            if grille[colonne][ligne] != 0:
-                if detecterVictoireVerticale(grille, colonne, ligne, joueur) or \
-                   detecterVictoireHorizontale(grille, ligne, joueur) or \
-                   detecterVictoireBasGaucheHautDroite(grille, colonne, ligne, joueur) or \
-                   detecterVictoireHautGaucheBasDroite(grille, colonne, ligne, joueur):
-                    return True
-    return False
 

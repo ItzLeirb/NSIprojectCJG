@@ -23,10 +23,10 @@ def affichageConsole(grille: list[list[int]], joueur: int, noms_joueurs: dict, e
     
     if etat_de_la_partie == 'en cours':
         print("")
-        print(f"Au tour du joueur {noms_joueurs[joueur]}")
+        print(f"Au tour du joueur {str(noms_joueurs[joueur])}")
     elif etat_de_la_partie == 'victoire':
         print("")
-        print(f"Victoire du joueur {noms_joueurs[joueur]} !")
+        print(f"Victoire du joueur {str(noms_joueurs[joueur])} !")
     elif etat_de_la_partie == 'match nul':
         print("")
         print("Egalité")
@@ -73,7 +73,7 @@ def trouverColonne(nom_joueur: str, grille: list[list[int]]) -> int:
     Demande au joueur actuel la colonne dans laquelle il veut jouer, et vérifie si elle est valide
 
     Entrée: 
-        nom_joueur: (type: str) le nom du joueur qui choisit la colonne
+        nom_joueur: (type: str ou fonction) le nom du joueur qui choisit la colonne
         grille: (type: list de list de int) la grille du jeu
     Sortie: 
         le numéro de la colonne (type: int)
@@ -124,9 +124,9 @@ def jeu():
 
         # Vérifie si le joueur est une IA ou un humain
         if callable(noms_joueurs[joueur]):  # Si l'entrée est une fonction, c'est une IA
-            index_colonne = noms_joueurs[joueur](grille, joueur, 3 - joueur)  # Appelle la fonction d'IA
+            index_colonne = noms_joueurs[joueur](grille, joueur, 3 - joueur, False)  # Appelle la fonction d'IA
         else:
-            index_colonne = trouverColonne(noms_joueurs[joueur], grille)  # Humain choisit une colonne
+            index_colonne = trouverColonne(str(noms_joueurs[joueur]), grille)  # Humain choisit une colonne
         
         # Ajout du jeton dans la grille
         grille, index_ligne = ajouterJeton(grille, index_colonne, joueur)
