@@ -13,7 +13,9 @@ def tousLesCoups(grille: list[list[int]]):
     """
     coups = []
     for index_colonne in range(len(grille)):
-        coups.append((index_colonne, trouverLigne(index_colonne)))
+        index_ligne = trouverLigne(grille, index_colonne)
+        if index_ligne is None: continue
+        coups.append((index_colonne, index_ligne))
     
     return coups
 
@@ -52,7 +54,7 @@ def compterJetonsAlignes(grille: list[list[int]], dernier_coup: tuple[int, int],
     
     # vertical
     compte = 0
-    for index_ligne in range(trouverLigne(grille, dernier_coup[0]), len(grille[0])):
+    for index_ligne in range(dernier_coup[1], 6):
         if grille[dernier_coup[0]][index_ligne] != joueur:
             break
         compte += 1
@@ -111,21 +113,28 @@ def compterJetonsAlignes(grille: list[list[int]], dernier_coup: tuple[int, int],
         
     return score
 
-def evaluation(grille: list[list[int]], joueur: int, victoire: bool) -> int:
+def evaluation(grille: list[list[int]], joueur: int, victoire: bool, dernier_coup: tuple[int, int]) -> int:
     """
-    Évalue la grille pour donner un score au joueur.
-    Ici, on utilise une méthode simple basée sur le nombre de jetons alignés.
+    Evalue le dernier coup potentiel
+
+    Entree:
+        grille (list[list[int]]): la grille
+        joueur (int): le numero du bot
+        victoire (bool): True si la partie est remportee par qq1
+        dernier_coup (tuple[int, int]): le dernier coup
+
+    Sortie:
+        int: le score evalue
     """
     score = 0
     
     if victoire:
-        score += 50
+        score += 150
 
-    # Exemple : Ajoutez vos propres heuristiques
     for index_colonne in range(len(grille)):
         for index_ligne in range(len(grille[0])):
-            score += compterOptions() - 1
-            score += 2 * compterJetonsAlignes() ** 2
+            score += compterOptions(grille, dernier_coup) - 1
+            score += 1.4 * compterJetonsAlignes(grille, dernier_coup, grille[dernier_coup[0]][dernier_coup[1]]) # valeur arbitraire
                 
     return score
 
@@ -134,15 +143,16 @@ def minimax(grille, profondeur, maximiser, joueur, autre_joueur, alpha, beta, es
     Evalue les coups possibles du bot
     """
     if profondeur == 0 or detecterVictoireVerticale(grille, dernier_coup[0], dernier_coup[1], joueur) == True or detecterVictoireHorizontale(grille, dernier_coup[1], joueur) == True or detecterVictoireBasGaucheHautDroite(grille, dernier_coup[0], dernier_coup[1], joueur) == True or detecterVictoireHautGaucheBasDroite(grille, dernier_coup[0], dernier_coup[1], joueur) == True:  # Vérifie si la profondeur est atteinte ou si la partie est terminée
-        score = evaluation(grille, joueur, (detecterVictoireVerticale(grille, dernier_coup[0], dernier_coup[1], joueur) == True or detecterVictoireHorizontale(grille, dernier_coup[1], joueur) == True or detecterVictoireBasGaucheHautDroite(grille, dernier_coup[0], dernier_coup[1], joueur) == True or detecterVictoireHautGaucheBasDroite(grille, dernier_coup[0], dernier_coup[1], joueur) == True))
+        score = evaluation(grille, joueur, (detecterVictoireVerticale(grille, dernier_coup[0], dernier_coup[1], joueur) == True or detecterVictoireHorizontale(grille, dernier_coup[1], joueur) == True or detecterVictoireBasGaucheHautDroite(grille, dernier_coup[0], dernier_coup[1], joueur) == True or detecterVictoireHautGaucheBasDroite(grille, dernier_coup[0], dernier_coup[1], joueur) == True), dernier_coup)
         return score, None
 
     if maximiser:
         meilleur_score = -math.inf
         meilleure_colonne = None
         for index_colonne in range(7):
-            if grille[index_colonne][0] == 0:  # Colonne jouable
+            if grille[index_colonne][0] >= 0:  # Colonne jouable
                 ligne = trouverLigne(grille, index_colonne)
+                if ligne is None: continue
                 grille[index_colonne][ligne] = joueur
                 score, _ = minimax(grille, profondeur - 1, False, joueur, autre_joueur, alpha, beta, est_fini, (index_colonne, ligne))
                 # valorise les coups proches du centre avec une fonction gaussienne
@@ -159,10 +169,13 @@ def minimax(grille, profondeur, maximiser, joueur, autre_joueur, alpha, beta, es
         pire_score = math.inf
         pire_colonne = None
         for index_colonne in range(7):
-            if grille[index_colonne][0] == 0:  # Colonne jouable
+            if grille[index_colonne][0] >= 0:  # Colonne jouable
                 ligne = trouverLigne(grille, index_colonne)
+                if ligne is None: continue
                 grille[index_colonne][ligne] = autre_joueur
                 score, _ = minimax(grille, profondeur - 1, True, joueur, autre_joueur, alpha, beta, est_fini, (index_colonne, ligne))
+                # valorise les coups proches du centre avec une fonction gaussienne
+                score += 10 * math.exp(- (index_colonne - 3)**2 / (2 * 5**2))
                 grille[index_colonne][ligne] = 0  # Annule le coup
                 if score < pire_score:
                     pire_score = score
