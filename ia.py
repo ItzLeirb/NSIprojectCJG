@@ -129,12 +129,12 @@ def evaluation(grille: list[list[int]], joueur: int, victoire: bool, dernier_cou
     score = 0
     
     if victoire:
-        score += 150
+        score += 250
 
     for index_colonne in range(len(grille)):
         for index_ligne in range(len(grille[0])):
             score += compterOptions(grille, dernier_coup) - 1
-            score += 1.4 * compterJetonsAlignes(grille, dernier_coup, grille[dernier_coup[0]][dernier_coup[1]]) # valeur arbitraire
+            score += compterJetonsAlignes(grille, dernier_coup, grille[dernier_coup[0]][dernier_coup[1]]) # valeur arbitraire
                 
     return score
 
@@ -156,7 +156,7 @@ def minimax(grille, profondeur, maximiser, joueur, autre_joueur, alpha, beta, es
                 grille[index_colonne][ligne] = joueur
                 score, _ = minimax(grille, profondeur - 1, False, joueur, autre_joueur, alpha, beta, est_fini, (index_colonne, ligne))
                 # valorise les coups proches du centre avec une fonction gaussienne
-                score += 10 * math.exp(- (index_colonne - 3)**2 / (2 * 5**2))
+                score += 5 * math.exp(- (index_colonne - 3)**2 / (2 * 5**2))
                 grille[index_colonne][ligne] = 0  # Annule le coup
                 if score > meilleur_score:
                     meilleur_score = score
@@ -175,7 +175,7 @@ def minimax(grille, profondeur, maximiser, joueur, autre_joueur, alpha, beta, es
                 grille[index_colonne][ligne] = autre_joueur
                 score, _ = minimax(grille, profondeur - 1, True, joueur, autre_joueur, alpha, beta, est_fini, (index_colonne, ligne))
                 # valorise les coups proches du centre avec une fonction gaussienne
-                score += 10 * math.exp(- (index_colonne - 3)**2 / (2 * 5**2))
+                score -= 10 * math.exp(- (index_colonne - 3)**2 / (2 * 5**2))
                 grille[index_colonne][ligne] = 0  # Annule le coup
                 if score < pire_score:
                     pire_score = score
@@ -192,6 +192,6 @@ def ia_choisir_colonne(grille: list[list[int]], joueur: int, autre_joueur: int, 
     Appelle Minimax pour choisir une colonne.
     """
     _, colonne = minimax(grille, profondeur, True, joueur, autre_joueur, -math.inf, math.inf, est_fini, (0,0))
-    print(_, colonne)
+    print(colonne)
     return colonne
 

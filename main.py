@@ -84,19 +84,19 @@ def trouverColonne(nom_joueur: str, grille: list[list[int]]) -> int:
     colonne = input("")
     
     # Vérifie si la colonne choisie est valide, la redemande si elle ne l'est pas.
-    valides = [i for i in range(7)]
-    est_int = False
-    while not est_int:
+    est_valable = False
+    while not est_valable:
         try:
             colonne = int(colonne) -1
-            est_int = True
-            if colonne in valides and grille[colonne][0] != 0 :
+            est_valable = True
+            if 0 > colonne or colonne > 6 and grille[colonne][0] != 0 :
                 print(f"La colonne choisie n'est pas valide. Choisis la colonne où tu veux jouer {nom_joueur} (compris entre 1 et 7):")
                 colonne = input("")
+                est_valable = True
         except:
             print(f"La colonne choisie n'est pas valide. Choisis la colonne où tu veux jouer {nom_joueur} (compris entre 1 et 7):")
             colonne = input("")
-            est_int = False
+            est_valable = False
 
     return colonne
 
