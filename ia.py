@@ -140,7 +140,21 @@ def evaluation(grille: list[list[int]], joueur: int, victoire: bool, dernier_cou
 
 def minimax(grille, profondeur, maximiser, joueur, autre_joueur, alpha, beta, est_fini: bool, dernier_coup: tuple):
     """
-    Evalue les coups possibles du bot
+    Controle l'evaluation du bot
+
+    Entree:
+        grille (_type_): la grille
+        profondeur (_type_): la profondeur de la recherche
+        maximiser (_type_): True si c'est au tour du bot dans sa recherche
+        joueur (_type_): le numero de l'ia
+        autre_joueur (_type_): le numero de l'autre joueur
+        alpha (_type_): l'alpha de la derniere recursion
+        beta (_type_): le beta de la derniere recursion
+        est_fini (bool): True si la partie est finie
+        dernier_coup (tuple): le dernier coup joue
+
+    Returns:
+        tuple[int, int | None] : le score evalue et le coup correspondant
     """
     if profondeur == 0 or detecterVictoireVerticale(grille, dernier_coup[0], dernier_coup[1], joueur) == True or detecterVictoireHorizontale(grille, dernier_coup[1], joueur) == True or detecterVictoireBasGaucheHautDroite(grille, dernier_coup[0], dernier_coup[1], joueur) == True or detecterVictoireHautGaucheBasDroite(grille, dernier_coup[0], dernier_coup[1], joueur) == True:  # Vérifie si la profondeur est atteinte ou si la partie est terminée
         score = evaluation(grille, joueur, (detecterVictoireVerticale(grille, dernier_coup[0], dernier_coup[1], joueur) == True or detecterVictoireHorizontale(grille, dernier_coup[1], joueur) == True or detecterVictoireBasGaucheHautDroite(grille, dernier_coup[0], dernier_coup[1], joueur) == True or detecterVictoireHautGaucheBasDroite(grille, dernier_coup[0], dernier_coup[1], joueur) == True), dernier_coup)
