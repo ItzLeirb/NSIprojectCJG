@@ -12,7 +12,7 @@ def tousLesCoups(grille: list[list[int]]):
         list de tuples: la liste des coups possibles
     """
     coups = []
-    for index_colonne in range(len(grille[0])):
+    for index_colonne in range(len(grille)):
         coups.append((index_colonne, trouverLigne(index_colonne)))
     
     return coups
@@ -36,8 +36,80 @@ def compterOptions(grille: list[list[int]], dernier_coup: tuple[int, int]) -> in
     
     return nombre_options
 
-def compterJetonsAlignes():
-    pass
+def compterJetonsAlignes(grille: list[list[int]], dernier_coup: tuple[int, int], joueur: int) -> int:
+    """
+    Compte et renvoie le nb de jetons identiques alignes avec le dernier coup
+
+    Entree:
+        grille (list[list[int]]): la grille
+        dernier_coup (tuple[int, int]): le dernier coup
+        joueur (int): le joueur (l'IA)
+
+    Sortie:
+        int: _description_
+    """
+    score = 0
+    
+    # vertical
+    compte = 0
+    for index_ligne in range(trouverLigne(grille, dernier_coup[0]), len(grille[0])):
+        if grille[dernier_coup[0]][index_ligne] != joueur:
+            break
+        compte += 1
+    score += compte
+    
+    # horizontal gauche
+    compte = 0
+    for index_colonne in range(dernier_coup[1], max(dernier_coup[1]-3, 0), -1): # va de droite a gauche
+        if grille[index_colonne][dernier_coup[1]] == 3 - joueur: # arrete si le jeton est de l'adversaire
+            break
+        compte += 1
+    score += compte
+    
+    # horizontal droite
+    compte = 0
+    for index_colonne in range(dernier_coup[1], min(dernier_coup[1]+3, 0)):
+        if grille[index_colonne][dernier_coup[1]] == 3 - joueur: # arrete si le jeton est de l'adversaire
+            break
+        compte += 1
+    score += compte
+    
+    # diagonales
+    distance_haut, distance_bas, distance_gauche, distance_droite = trouverDistances(grille, dernier_coup[0], dernier_coup[1])
+    
+    # diagonale haut-gauche
+    compte = 0
+    for modificateur in range(min(distance_haut, distance_gauche)):
+        if grille[dernier_coup[0] - modificateur][dernier_coup[1] - modificateur] == 3 - joueur: # arrete si le jeton est de l'adversaire
+            break
+        compte += 1
+    score += compte
+    
+    # diagonale haut-droite
+    compte = 0
+    for modificateur in range(min(distance_haut, distance_droite)):
+        if grille[dernier_coup[0] + modificateur][dernier_coup[1] - modificateur] == 3 - joueur: # arrete si le jeton est de l'adversaire
+            break
+        compte += 1
+    score += compte
+    
+    # diagonale bas-gauche
+    compte = 0
+    for modificateur in range(min(distance_bas, distance_gauche)):
+        if grille[dernier_coup[0] - modificateur][dernier_coup[1] + modificateur] == 3 - joueur: # arrete si le jeton est de l'adversaire
+            break
+        compte += 1
+    score += compte
+    
+    # diagonale bas-droite
+    compte = 0
+    for modificateur in range(min(distance_bas, distance_droite)):
+        if grille[dernier_coup[0] + modificateur][dernier_coup[1] + modificateur] == 3 - joueur: # arrete si le jeton est de l'adversaire
+            break
+        compte += 1
+    score += compte
+        
+    return score
 
 def evaluation(grille: list[list[int]], joueur: int, victoire: bool) -> int:
     """
