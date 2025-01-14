@@ -90,7 +90,7 @@ def trouverColonne(nom_joueur: str, grille: list[list[int]]) -> int:
         try:
             colonne = int(colonne) -1
             est_valide = True
-            if colonne not in valides and grille[colonne][0] != 0 :
+            if colonne not in valides or grille[colonne][0] != 0:
                 print(f"La colonne choisie n'est pas valide. Choisis la colonne où tu veux jouer {nom_joueur} (compris entre 1 et 7):")
                 colonne = input("")
                 est_valide = False
