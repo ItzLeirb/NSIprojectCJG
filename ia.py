@@ -215,6 +215,6 @@ def ia_choisir_colonne(grille: list[list[int]], joueur: int, autre_joueur: int, 
         int: la colonne jouee
     """
     _, colonne = minimax(grille, profondeur, True, joueur, autre_joueur, -math.inf, math.inf, est_fini, (0,0))
-    print(colonne)
+    print(colonne+1)
     return colonne
 
