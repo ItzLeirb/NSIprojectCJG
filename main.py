@@ -62,7 +62,7 @@ def setupJoueur() -> dict:
     for i in range(1, 3):
         choix = input(f"Joueur {i}, voulez-vous être une IA ? (o/n) : ").lower()
         if choix == 'o':
-            joueurs[i] = ia_choisir_colonne
+            joueurs[i] = ia_choisir_colonne     
         else:
             joueurs[i] = trouverNom(i)
     return joueurs
