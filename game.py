@@ -1,6 +1,5 @@
 # main functions
 from settings import *
-from ia import *
 
 # la grille:
 """

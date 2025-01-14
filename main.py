@@ -85,18 +85,19 @@ def trouverColonne(nom_joueur: str, grille: list[list[int]]) -> int:
     
     # Vérifie si la colonne choisie est valide, la redemande si elle ne l'est pas.
     valides = [i for i in range(7)]
-    est_int = False
-    while not est_int:
+    est_valide = False
+    while not est_valide:
         try:
             colonne = int(colonne) -1
-            est_int = True
-            if colonne in valides and grille[colonne][0] != 0 :
+            est_valide = True
+            if colonne not in valides and grille[colonne][0] != 0 :
                 print(f"La colonne choisie n'est pas valide. Choisis la colonne où tu veux jouer {nom_joueur} (compris entre 1 et 7):")
                 colonne = input("")
+                est_valide = False
         except:
             print(f"La colonne choisie n'est pas valide. Choisis la colonne où tu veux jouer {nom_joueur} (compris entre 1 et 7):")
             colonne = input("")
-            est_int = False
+            est_valide = False
 
     return colonne
 
@@ -124,7 +125,7 @@ def jeu():
 
         # Vérifie si le joueur est une IA ou un humain
         if callable(noms_joueurs[joueur]):  # Si l'entrée est une fonction, c'est une IA
-            index_colonne = noms_joueurs[joueur](grille, joueur, 3 - joueur)  # Appelle la fonction d'IA
+            index_colonne = noms_joueurs[joueur](grille, joueur, 3 - joueur, running)  # Appelle la fonction d'IA
         else:
             index_colonne = trouverColonne(noms_joueurs[joueur], grille)  # Humain choisit une colonne
         
